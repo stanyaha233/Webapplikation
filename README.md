@@ -6,10 +6,10 @@
 
 Idee für dieses Projekt ist es eine Study-Website zu erstellen für das Projekt Webapplikation, das beinhaltet ein Pomodoro Timer,Flow Tracker wo man dann angeben kann wieviel Prozent man von dem Ziehl erreicht hat um somit die optimale Study Time rauszufinden was das ganze individuellisiert.
 Man soll ausserdem einen wöchentlichen Study Überblick haben sollen um zu sehen wie man über die letzte Woche am besten gelernt hat. 
-Die Website soll so entwickelt werden um neurodivergenten Personen ein Vorteil zu bringen und aber auch den "normalen". 
+Die Website soll so entwickelt werden um neurodivergenten Personen ein Vorteil zu bringen aber auch den "normalen". 
 
 Optionale Add-Ons wären:
-- Equelizer aus Youtube viedeo
+- Equalizer aus Youtube Viedeo
 - RSS Feed Study Reminder
 
 ## Kriterien-Zuordnung M1
