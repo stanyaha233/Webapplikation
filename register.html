@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div class="page-layout">
+    <aside class="page-sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </aside>
+
+    <main class="page-main">
+        <h2>Register</h2>
+        <form method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br/>
+
+            <label for="Pronouns">Pronouns:</label>
+            <select id="Pronouns" name="Pronouns" required>
+                <option value="" disabled selected>Bitte wählen...</option>
+                <option value="she/her">She/Her</option>
+                <option value="he/him">He/Him</option>
+                <option value="they/them">They/Them</option>
+                <option value="other">Other</option>
+            </select>
+            <br/>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br/>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br/>
+            
+            <button type="submit">Register</button>
+        </form>
+        <button onclick="window.location.href='login.html'">Already have an account? Login</button>
+    </main>
+
+    <footer class="page-footer">
+        <p>&copy; 2026 Our Website. All rights reserved.</p>
+    </footer>
+</div>
+
+</body>
+</html>

@@ -6,24 +6,31 @@
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </header>
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="login.html">Login</a></li>
-    </ul>
-</nav>
-<main>
+<body> 
+    <div class="page-layout">
+  <aside class="page-sidebar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </aside>
+<main class="page-main">
     <h2>Login</h2>
     <form action="login.php" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
+        <br/>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
+        <br/>
         <button type="submit">Login</button>
     </form>
+    <button onclick="window.location.href='register.html'">Don't have an account? Register</button>
 </main>
-<footer>
+<footer class="page-footer">
     <p>2026 Our Website. All rights reserved.</p>
 </footer>
+</div>
+</body>
 
 </html>
