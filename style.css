@@ -1,51 +1,69 @@
 :root {
---color-primary: #A5CDD8;
---color-accent: #D7F6FF;
---color-bg: #FFFFFF;
---color-dark: #3E646E;
---color-text: #001F26;
---spacing-sm: 0.5rem;
---spacing-md: 1rem;
---radius-md: 8px;
---shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+    --color-primary: #A5CDD8;
+    --color-accent: #D7F6FF;
+    --color-bg: #FFFFFF;
+    --color-dark: #3E646E;
+    --color-text: #001F26;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --radius-md: 8px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .page-layout {
     font-family: 'Inter', sans-serif;
-    display:grid;
-    grid-template-areas: 
-        "header header" 
-        "sidebar main" 
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
         "footer footer";
     grid-template-columns: 220px 1fr;
     grid-template-rows: auto 1fr auto;
 }
+
 .page-header {
     grid-area: header;
 }
-.page-sidebar {grid-area: sidebar;}
-.page-main {grid-area: main;}
-.page-footer {grid-area: footer;}
+
+.page-sidebar {
+    grid-area: sidebar;
+}
+
+.page-main {
+    grid-area: main;
+}
+
+.page-footer {
+    grid-area: footer;
+}
 
 
 .calender {
     text-align: center;
     margin-top: 20px;
-    width:100%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    grid:100%;
+    grid: 100%;
     background-color: var(--color-primary);
 }
+
 header {
     justify-content: center;
     text-align: center;
     width: 100%;
     background-color: lightskyblue;
 }
-main{
-    background-color: cadetblue;
+
+sidebar {
+    background-color: rgb(0, 110, 255);
 }
+
+main {
+    background-color: cadetblue;
+
+}
+
 footer {
     color: rgb(0, 0, 0);
     background-color: var(--color-primary);
@@ -59,9 +77,9 @@ footer {
 
 @media (max-width: 768px) {
     .page-layout {
-        grid-template-areas: 
-            "header" 
-            "sidebar" 
+        grid-template-areas:
+            "header"
+            "sidebar"
             "main"
             "footer";
         grid-template-columns: 1fr;
@@ -71,11 +89,11 @@ footer {
 
 @media (min-width: 1280px) {
     .page-layout {
-        grid-template-areas: 
-            "header header" 
+        grid-template-areas:
+            "header header"
             "sidebar main"
             "footer footer";
-        grid-template-columns: repeat(4,1fr);
+        grid-template-columns: 220px 1fr;
         gap: 1.5rem;
         grid-template-rows: auto 1fr auto auto;
     }

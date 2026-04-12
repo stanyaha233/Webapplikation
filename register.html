@@ -1,54 +1,73 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Onboarding - Study App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="onboarding.css">
 </head>
-<body> 
+
+<body>
     <div class="page-layout">
-    <aside class="page-sidebar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-        </ul>
-    </aside>
+        <aside class="page-sidebar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
 
-    <main class="page-main">
-        <h2>Register</h2>
-        <form method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <br/>
+            </ul>
+        </aside>
+        <main class="page-main">
+            <div class="card status-banner">
+                <p>🎉 Du bist der <strong>1.337.</strong> User!</p>
+            </div>
 
-            <label for="Pronouns">Pronouns:</label>
-            <select id="Pronouns" name="Pronouns" required>
-                <option value="" disabled selected>Bitte wählen...</option>
-                <option value="she/her">She/Her</option>
-                <option value="he/him">He/Him</option>
-                <option value="they/them">They/Them</option>
-                <option value="other">Other</option>
-            </select>
-            <br/>
+            <form>
+                <div class="card">
+                    <h2>Registrierung</h2>
+                    <div class="input-group">
+                        <input type="text" placeholder="Name" required>
+                        <select id="Pronouns" name="Pronouns" required>
+                            <option value="" disabled selected>Bitte wählen...</option>
+                            <option value="she/her">She/Her</option>
+                            <option value="he/him">He/Him</option>
+                            <option value="they/them">They/Them</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <input type="email" placeholder="E-Mail-Adresse" required>
+                    <input type="password" placeholder="Passwort" required>
+                </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br/>
+                <div class="card">
+                    <h2>Wie lernst du normalerweise?</h2>
+                    <br />
+                    <label class="radio-option">
+                        <input type="radio" name="study-type" value="sprinter">
+                        <span><strong>Sprinter:</strong> Kurz und intensiv</span>
+                    </label>
+                    <br />
+                    <label class="radio-option">
+                        <input type="radio" name="study-type" value="marathon">
+                        <span><strong>Marathonläufer:</strong> Stundenlang und stetig</span>
+                    </label>
+                    <br />
+                    <label class="radio-option">
+                        <input type="radio" name="study-type" value="hero">
+                        <span><strong>Last-Minute-Hero:</strong> Hoher Druck nötig</span>
+                    </label>
+                </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br/>
-            
-            <button type="submit">Register</button>
-        </form>
-        <button onclick="window.location.href='login.html'">Already have an account? Login</button>
-    </main>
-
-    <footer class="page-footer">
-        <p>&copy; 2026 Our Website. All rights reserved.</p>
-    </footer>
-</div>
-
+                <button type="submit" class="submit-btn">Account erstellen</button>
+                <button type="button" onclick="window.location.href='login.html'">Already have an account? Log in</button>
+            </form>
+        </main>
+        <footer class="page-footer">
+            <p>&copy; 2026 Our Website. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
+
 </html>
