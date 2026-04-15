@@ -18,4 +18,4 @@ RSS-Feed Study-Reminder
 | Formular mit Labels | login.html | Z. 19–25 |
 | Responsives Layout (Flexbox/Grid) | styles.css | Z. |
 | Media Query | styles.css | Z. 60, Z.72 |
-| URL-Struktur | index.html, login.html, register.html | Pfade: /index, /login, /register|
+| URL-Struktur | index.html, login.html, register.html, dashboard.html | Pfade: /index, /login, /register, /dashboard|
