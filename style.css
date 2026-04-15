@@ -1,12 +1,12 @@
 :root {
-    --color-primary: #A5CDD8;
-    --color-accent: #D7F6FF;
-    --color-bg: #FFFFFF;
-    --color-dark: #3E646E;
-    --color-text: #001F26;
+    --color-primary: #95c2ff; 
+    --color-accent: #c2d9ff;  
+    --color-bg: #f4f8ff;      
+    --color-dark: #4a8fd4;     
+    --color-text: #1a1f2e;     
+    
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
-    --radius-md: 8px;
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,14 +19,21 @@
         "footer footer";
     grid-template-columns: 220px 1fr;
     grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 .page-header {
     grid-area: header;
+    padding: 4px 0;
 }
 
 .page-sidebar {
     grid-area: sidebar;
+    background-color: var(--color-accent);
+    padding-left: 1rem;
+    padding-top: 1rem;
 }
 
 .page-main {
@@ -37,42 +44,42 @@
     grid-area: footer;
 }
 
-
 .calender {
     text-align: center;
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    grid: 100%;
-    background-color: var(--color-primary);
+    margin: var(--spacing-sm);
+    background-color: var(--color-bg);
+    border-radius: 8px;
 }
 
 header {
     justify-content: center;
     text-align: center;
     width: 100%;
-    background-color: lightskyblue;
+    background-color: var(--color-primary);
+    padding: 3rem 1rem;
 }
 
 sidebar {
-    background-color: rgb(0, 110, 255);
+    background-color: var(--color-dark);
+    display: block;
 }
 
 main {
-    background-color: cadetblue;
-
+    background-color: var(--color-bg);
+    padding: var(--spacing-md);
 }
 
 footer {
-    color: rgb(0, 0, 0);
+    color: var(--color-text);
     background-color: var(--color-primary);
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    left: 0;
+    padding-top: 1rem;
     bottom: 0;
     width: 100%;
+}
+
+ul {
+    list-style: none;
 }
 
 @media (max-width: 768px) {
@@ -84,6 +91,7 @@ footer {
             "footer";
         grid-template-columns: 1fr;
         grid-template-rows: auto 1fr auto auto;
+        gap: 5px;
     }
 }
 
@@ -94,7 +102,7 @@ footer {
             "sidebar main"
             "footer footer";
         grid-template-columns: 220px 1fr;
-        gap: 1.5rem;
         grid-template-rows: auto 1fr auto auto;
+        gap: 1.5rem;
     }
 }

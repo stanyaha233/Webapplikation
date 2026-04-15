@@ -1,6 +1,6 @@
 
 # Webapplikation
-**Team:** Stella Keller (Matrikelnummer), Hanna Stanyak(315230)
+**Team:** Stella Keller (315158), Hanna Stanyak(315230)
 
 **Repository:** https://github.com/stanyaha233/Webapplikation
 ## Projektidee
@@ -14,8 +14,9 @@ RSS-Feed Study-Reminder
 ## Kriterien-Zuordnung M1
 | Kriterium | Datei | Zeile / Hinweis |
 |---|---|---|
-| Semantische HTML-Struktur | index.html | Z. 1–21 |
-| Formular mit Labels | login.html | Z. 19–25 |
-| Responsives Layout (Flexbox/Grid) | styles.css | Z. |
-| Media Query | styles.css | Z. 60, Z.72 |
-| URL-Struktur | index.html, login.html, register.html, dashboard.html | Pfade: /index, /login, /register, /dashboard|
+| Semantische HTML-Struktur | home.html | Z. 1–60 |
+| Formular mit Labels   | login.html | Z. 23-31 |
+| Responsives Layout (Flexbox/Grid) | styles.css | Z. 15 |
+| Konsistente Typografie und Farbgebung | styles.css | Z. 2-10
+| Media Query | styles.css | Z. 85, Z.98 |
+| URL-Struktur | home.html, login.html, register.html, timer.html, dashboard.html | Pfade: /home, /login, /register, /timer, /dashboard|

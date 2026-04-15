@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>your flow time — Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-layout">
+
+  <header class="page-header">
+    <h1>Good evening, Alex.</h1>
+    <p>Ready for your next session?</p>
+  </header>
+
+  <aside class="page-sidebar">
+    <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="timer.html">Timer</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+  </aside>
+
+  <main class="page-main">
+
+    <nav aria-label="Timer-Einstellungen">
+      <h1>Settings</h1>
+      <ul>
+        <li>Focus · 25 min</li>
+        <li>Short Break · 5 min</li>
+        <li>Long Break · 15 min</li>
+      </ul>
+      <div class="settings-checkbox">
+        <label>
+          <input type="checkbox" checked /> Quotes
+        </label>
+      </div>
+    </nav>
+
+    <div class="preparation-box">
+      <h3>Preparation</h3>
+      <ul>
+        <li>Open a window</li>
+        <li>Grab a drink</li>
+        <li>Quick stretch</li>
+        <li>Phone away</li>
+      </ul>
+    </div>
+
+    <section class="timer-section">
+      <h2>Deep Work</h2>
+      <div class="timer-display"><strong>30:00</strong></div>
+      <img alt = "timer" style = "width: 15rem" src = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F009%2F304%2F537%2Flarge_2x%2Fdigital-timer-clipart-design-illustration-free-png.png&f=1&nofb=1&ipt=255315f8397dd20f59b7968a113e8acda94ad3680b231608aa4a3862b38d22bb"/>
+      <p>Focus session · you have 30 min left</p>
+      
+      <blockquote class="quote-box">
+        <p>"Stay focused, go after your dreams and keep moving toward your goals."</p>
+        <cite>— Unbekannt</cite>
+      </blockquote>
+
+      <button class="button">◉ Start Focus Session</button>
+    </section>
+
+    <hr>
+
+    <section class="reflection-section">
+      <h2>Session Reflection</h2>
+      <div class="calender">
+        <strong>you have a total of 847 minutes of Flow Time</strong>
+      </div>
+      
+      <div class="progress-container">
+        <label for="flow-progress">Session Progress: 60%</label>
+        <progress id="flow-progress" value="60" max="100"></progress>
+      </div>
+
+      <div class="feedback-container">
+        <h3>How did it feel?</h3>
+        <label><input type="radio" name="flow" value="stress"> Overwhelmed</label><br>
+        <label><input type="radio" name="flow" value="flow" checked> In the flow</label><br>
+        <label><input type="radio" name="flow" value="bored"> Understimulated</label>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>2026 your flow time — Stay Focused</p>
+  </footer>
+
+</body>
+</html>
