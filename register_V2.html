@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyFlow — Dein Flow-Check</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --blue: #95c2ff;
+            --blue-light: #c2d9ff;
+            --blue-pale: #e8f2ff;
+            --blue-dark: #4a8fd4;
+            --paper: #f4f8ff;
+            --white: #ffffff;
+            --ink: #1a1f2e;
+            --ink-soft: #3d4559;
+            --ink-muted: #7a86a0;
+            --streak: #ff8c42;
+            --streak-light: #ffe0c8;
+        }
+
+        body {
+            font-family: 'DM Mono', monospace;
+            background-color: var(--paper);
+            color: var(--ink-soft);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .card {
+            background: var(--white);
+            width: 100%;
+            max-width: 500px;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(74, 143, 212, 0.1);
+            border: 1px solid var(--blue-pale);
+            transition: all 0.5s ease;
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            color: var(--ink);
+            font-weight: 500;
+            font-size: 2.2rem;
+            margin-top: 0;
+        }
+
+        .step { display: none; animation: fadeIn 0.4s ease forwards; }
+        .step.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ink-muted);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--blue-pale);
+            border-radius: 8px;
+            background: var(--paper);
+            font-family: 'DM Mono', monospace;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus { border-color: var(--blue); }
+
+        .btn {
+            background: var(--blue);
+            color: var(--ink);
+            border: none;
+            padding: 1rem 2rem;
+            font-family: 'DM Mono', monospace;
+            font-weight: bold;
+            border-radius: 100px;
+            cursor: pointer;
+            margin-top: 2rem;
+            width: 100%;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover { background: var(--blue-light); transform: scale(1.02); }
+
+        /* Spielereien */
+        .option-grid {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .option-card {
+            padding: 1rem;
+            border: 1px solid var(--blue-pale);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .option-card:hover { background: var(--blue-pale); }
+        .option-card.selected {
+            background: var(--blue-light);
+            border-color: var(--blue-dark);
+        }
+
+        .badge-count {
+            display: inline-block;
+            background: var(--streak-light);
+            color: var(--streak);
+            padding: 0.2rem 0.6rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .result-box {
+            background: var(--paper);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--streak);
+            margin-top: 1.5rem;
+        }
+
+        .color-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="step active" id="step1">
+        <span class="badge-count">User #1.402</span>
+        <h1>Willkommen bei StudyFlow</h1>
+        <p style="font-size: 0.8rem;">Wir beweisen dir: Unsere Datenbank ist so sicher wie Fort Knox. 🔒</p>
+        
+        <label>Name / Pronomen</label>
+        <input type="text" id="name" placeholder="z.B. Alex (they/them)">
+        
+        <label>E-Mail</label>
+        <input type="email" id="email" placeholder="student@university.de">
+        
+        <label>Passwort</label>
+        <input type="password" id="pw" placeholder="••••••••">
+        
+        <button class="btn" onclick="nextStep(2)">Registrierung sichern</button>
+    </div>
+
+    <div class="step" id="step2">
+        <h2>Phase 1</h2>
+        <h1>Welcher Lerntyp bist du?</h1>
+        <div class="option-grid">
+            <div class="option-card" onclick="selectType(this, 'Sprinter')">
+                <strong>⚡️ Sprinter</strong><br><small>Kurz, intensiv, fokussiert.</small>
+            </div>
+            <div class="option-card" onclick="selectType(this, 'Marathon')">
+                <strong>🏃‍♂️ Marathonläufer</strong><br><small>Stundenlang, stetig, ausdauernd.</small>
+            </div>
+            <div class="option-card" onclick="selectType(this, 'Hero')">
+                <strong>🔥 Last-Minute-Hero</strong><br><small>Hoher Druck ist mein Treibstoff.</small>
+            </div>
+        </div>
+        <button class="btn" onclick="nextStep(3)">Weiter zum Flow-Check</button>
+    </div>
+
+    <div class="step" id="step3">
+        <h2>Phase 2: IST-Analyse</h2>
+        <h1>Study Habits</h1>
+        
+        <label>Stunden pro Woche (realistisch)</label>
+        <input type="number" id="hours" placeholder="0">
+
+        <label>Flow-Frequenz (Zeit vergessen)</label>
+        <div class="option-grid">
+            <div class="option-card" onclick="selectFlow(this, 'Nie')">Nie</div>
+            <div class="option-card" onclick="selectFlow(this, 'Selten')">Selten</div>
+            <div class="option-card" onclick="selectFlow(this, 'Gelegentlich')">Gelegentlich</div>
+            <div class="option-card" onclick="selectFlow(this, 'Oft')">Oft</div>
+        </div>
+
+        <button class="btn" onclick="nextStep(4)">Wer bin ich?</button>
+    </div>
+
+    <div class="step" id="step4">
+        <h1>Der größte Stopper</h1>
+        <p style="font-size: 0.8rem;">Warum brichst du eine Session ab?</p>
+        <div class="option-grid">
+            <div class="option-card" onclick="setStopper('rot')">
+                <strong>A:</strong> Ich bin völlig fertig, Kopfschmerzen, Stress.
+            </div>
+            <div class="option-card" onclick="setStopper('grau')">
+                <strong>B:</strong> Ich scrolle am Handy (Stoff ist langweilig).
+            </div>
+            <div class="option-card" onclick="setStopper('flow')">
+                <strong>C:</strong> Ich habe mein Ziel erreicht und höre zufrieden auf.
+            </div>
+        </div>
+        <button class="btn" onclick="showEvaluation()">Analyse abschließen</button>
+    </div>
+
+    <div class="step" id="step5">
+        <h1 id="res-greeting">Hey Alex!</h1>
+        <p>Dein Profil ist bereit. Du bist aktuell Typ:</p>
+        <h2 id="res-type" style="color: var(--streak); font-size: 1.2rem; margin: 0; border: none;">Der rastlose Performer</h2>
+        
+        <div class="result-box">
+            <p><strong>Deine Diagnose:</strong> <span id="res-diag"></span></p>
+        </div>
+
+        <p style="font-size: 0.8rem; margin-top: 1.5rem;">
+            <strong>Unser Plan:</strong> <span id="res-plan"></span>
+        </p>
+
+        <div style="background: var(--blue-pale); padding: 1rem; border-radius: 8px; font-size: 0.7rem; text-align: center;">
+            Dein Ziel: Von <span id="res-hours">10</span>h "Ritz-Ratz-Lernen" zu <strong>5h echtem Flow</strong> pro Woche.
+        </div>
+
+        <button class="btn" onclick="location.href='index.html'">Neustart</button>
+    </div>
+</div>
+
+<script>
+    let userData = {
+        name: "",
+        type: "",
+        hours: 0,
+        flow: "",
+        stopper: ""
+    };
+
+    function nextStep(stepNum) {
+        if(stepNum === 2) userData.name = document.getElementById('name').value || "Alex";
+        
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step' + stepNum).classList.add('active');
+    }
+
+    function selectType(el, val) {
+        document.querySelectorAll('#step2 .option-card').forEach(c => c.classList.remove('selected'));
+        el.classList.add('selected');
+        userData.type = val;
+    }
+
+    function selectFlow(el, val) {
+        document.querySelectorAll('#step3 .option-card').forEach(c => c.classList.remove('selected'));
+        el.classList.add('selected');
+        userData.flow = val;
+    }
+
+    function setStopper(val) {
+        document.querySelectorAll('#step4 .option-card').forEach(c => c.classList.remove('selected'));
+        event.currentTarget.classList.add('selected');
+        userData.stopper = val;
+    }
+
+    function showEvaluation() {
+        userData.hours = document.getElementById('hours').value || 0;
+        document.getElementById('res-greeting').innerText = `Hey ${userData.name.split(' ')[0]}!`;
+        document.getElementById('res-hours').innerText = userData.hours;
+
+        const diag = document.getElementById('res-diag');
+        const plan = document.getElementById('res-plan');
+        const typeDisplay = document.getElementById('res-type');
+
+        if(userData.stopper === 'rot') {
+            typeDisplay.innerText = "Der rastlose Performer";
+            diag.innerHTML = `<span class="color-dot" style="background: #ff5f5f"></span> Du neigst dazu, dich im <b>roten Bereich</b> zu verlieren. Deine Ambitionen sind hoch, aber dein Stresslevel steigt oft schneller als dein Fortschritt.`;
+            plan.innerText = "Wir achten in deinen Reflexionen besonders darauf, ob du 'zufrieden müde' oder 'ausgebrannt' bist. Wir schlagen dir Entschleunigungs-Sprints vor.";
+        } else if (userData.stopper === 'grau') {
+            typeDisplay.innerText = "Der abgelenkte Sucher";
+            diag.innerHTML = `<span class="color-dot" style="background: #7a86a0"></span> Du rutschst oft in den <b>grauen Bereich</b>. Dein Gehirn sucht nach Reizen, weil der Stoff nicht "klickt".`;
+            plan.innerText = "Wir nutzen Gamification, um die Barriere zum ersten Flow-Moment zu senken. Weniger Scrolling, mehr Fokus-Sessions.";
+        } else {
+            typeDisplay.innerText = "Der Flow-Pilot";
+            diag.innerHTML = `<span class="color-dot" style="background: #95c2ff"></span> Du hast bereits eine starke Tendenz zum <b>Flow</b>. Du hörst auf, wenn es am schönsten ist.`;
+            plan.innerText = "Wir helfen dir, diese Phasen zu stabilisieren und die 'Rüstzeit' zu verkürzen, damit du schneller in die Zone kommst.";
+        }
+
+        nextStep(5);
+    }
+</script>
+
+</body>
+</html>

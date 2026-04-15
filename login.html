@@ -6,33 +6,42 @@
     <title>Login</title>
     <link rel="stylesheet" href="style.css">
 </header>
-<body> 
-    <div class="page-layout">
-  <aside class="page-sidebar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
 
-        </ul>
-    </aside>
-<main class="page-main">
-    <h2>Login</h2>
-    <form action="login.php" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br/>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br/>
-        <button type="submit">Login</button>
-    </form>
-    <button onclick="window.location.href='register.html'">Don't have an account? Register</button>
-</main>
-<footer class="page-footer">
-    <p>2026 Our Website. All rights reserved.</p>
-</footer>
-</div>
+<body>
+    <div class="page-layout">
+        <aside class="page-sidebar">
+            <a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-800 text-teal-700 dark:text-teal-300 rounded-xl font-semibold scale-95 transition-transform duration-200"
+                href="dashboard.html">
+                <span class="material-symbols-outlined" data-icon="dashboard"></span>
+                <span class="text-[0.68rem]">Dashboard</span>
+            </a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+
+            </ul>
+        </aside>
+        <main class="page-main">
+            <h1>Anmelden</h1>
+            <div class="card">
+                <form action="login.php" method="post">
+                    <label>Nutzername</label>
+                    <input type="text" name="username" required>
+                    <br />
+                    <label>Passwort</label>
+                    <input type="password" name="password" required>
+                    <br />
+                    <button type="submit">Einloggen</button>
+                </form>
+            </div>
+            <button class="secondary" onclick="window.location.href='register_V2.html'">Noch kein Konto?
+                Registrieren</button>
+        </main>
+        <footer class="page-footer">
+            <p>2026 Our Website. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 
 </html>
