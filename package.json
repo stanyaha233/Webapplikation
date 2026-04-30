@@ -1,0 +1,28 @@
+{
+  "name": "webapplikation",
+  "version": "1.0.0",
+  "description": "**Team:** Stella Keller (315158), Hanna Stanyak(315230)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stanyaha233/Webapplikation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/stanyaha233/Webapplikation/issues"
+  },
+  "homepage": "https://github.com/stanyaha233/Webapplikation#readme",
+  "dependencies": {
+    "react": "^19.2.5"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
