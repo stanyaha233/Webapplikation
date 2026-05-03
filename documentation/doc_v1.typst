@@ -1,0 +1,199 @@
+#let b = black
+#let g = rgb("#707070")
+
+#set document(title: "Ausarbeitung Web-Applikation", author: ("Stella Keller", "Hanna Stanyak"))
+#set page(
+  paper: "a4",
+  margin: (x: 2.5cm, y: 3cm),
+  numbering: none,
+  fill: gradient.linear(rgb("#6ac1fb"), white, angle: 90deg),
+)
+#set text(font: "serif", size: 11pt, lang: "de", fill: b)
+#set heading(numbering: "1.1")
+#set par(justify: true, leading: 0.65em)
+
+// --- DECKBLATT ---
+#align(center)[
+  #v(4cm)
+  #text(size: 24pt, weight: "bold")[your flow time]
+  
+  #v(1cm)
+  #text(size: 16pt)[Ausarbeitung zum Semesterprojekt]
+  
+  #v(0.5cm)
+  #text(size: 14pt)[Praktikum Web-Applikationen – SS26]
+  
+  #v(0.5cm)
+  #text(size: 12pt)[Dozent: Prof. Dr. Pascal Laube HTWG Konstanz]
+  
+  #v(4cm)
+  #align(center)[
+    #grid(
+      columns: (auto, auto),
+      gutter: 2cm,
+      [
+        *Team* \
+        Hanna Stanyak \
+        Matrikelnummer: 315230
+      ],
+      [
+        * und * \
+        Stella Keller \
+        Matrikelnummer: 315158
+      ]
+    )
+  ]
+  
+  #v(3cm)
+  *Abgabedatum:* #datetime.today().display("[day].[month].[year]")
+]
+
+
+
+/*    contents   */
+#pagebreak()
+#set page(fill: none)
+#set text(fill: g)
+#outline(
+  title: "Inhaltsverzeichnis",
+  depth: 2
+)
+
+#pagebreak()
+
+// Seitenzählung für den Hauptteil neu starten.
+// Das Deckblatt und Inhaltsverzeichnis haben somit keine Seitenzahl
+// und der Hauptteil beginnt bei Seite 1.
+#counter(page).update(1)
+#set page(numbering: "1")
+
+/*    Hauptteil   */
+#set text(fill: b)
+= Einleitung
+_Umfang: ca. 1–2 Seiten_
+
+== Projektidee und Motivation
+Hier beschreibt ihr, worum es in eurer App geht (z.B. Rezeptbuch, Vereinsplaner etc.) und warum ihr diese Idee gewählt habt.
+
+== Zielgruppe
+Für wen ist die Applikation gedacht?
+
+- Neurodivergenz
+- Handy/Ablenkung
+- Indivuduelles Lernen sowie Alltagsverwendung 
+- unkonventionelle Rhytmen (zB auch für Lesen?)
+
+== Funktionsumfang
+Was kann die App? Welche Features wurden umgesetzt?
+
+#set text(fill: g)
+= Technologie-Stack
+_Umfang: ca. 2 Seiten_
+
+Übersicht der eingesetzten Technologien mit kurzer Begründung der Wahl.
+
+== Frontend
+z.B. React, TypeScript, HTML/CSS.
+
+== Backend
+z.B. Node.js (Express, Fastify).
+
+== Datenbank
+z.B. SQLite, PostgreSQL oder MongoDB.
+
+== Tooling
+z.B. Vite, npm.
+
+
+= Architektur
+_Umfang: ca. 3–4 Seiten_
+
+Aufbau der Anwendung inklusive Diagrammen.
+
+== Komponentenstruktur
+Wie ist das React-Frontend aufgebaut? (Ein Komponentenbaum ist hier erwünscht).
+
+== API-Design
+Welche REST-Routen bietet das Backend an? 
+
+== Datenbankschema
+Wie sind die Daten strukturiert? (Hier z.B. ein ER-Diagramm einfügen).
+
+#set text(fill: b)
+= Umsetzung pro Meilenstein
+_Umfang: ca. 6–8 Seiten_
+
+Pro Meilenstein: Was wurde umgesetzt? Welche VL-Konzepte sind wo im Code sichtbar? Kurze Code-Ausschnitte sind erlaubt, aber keine vollständigen Listings.
+
+== M1 – Projektstart & Fundament
+HTML/CSS Prototyp, semantische Struktur, responsives Layout. Phasen: Ideenfindung, Konzeptualisierung, Aufgabenverteilung
+
+#set text(fill: g)
+== M2 – React-Umbau & Interaktion 
+
+== M3 – Daten, Routing & REST
+React Router, Datenfetching (GET, POST/PUT/DELETE), Fehlerbehandlung, geteilter State (React Context).
+
+== M4 – Qualität & Backend
+Node.js-Server, Datenbankanbindung, Tests, Authentifizierung (Login/Registrierung).
+
+== M5 – Betrieb & Feinschliff
+Deployment und Performance-Maßnahmen.
+
+
+= Testing & Qualitätssicherung
+_Umfang: ca. 2 Seiten_
+
+== Teststrategie
+Was wird getestet und was nicht (und warum)?
+
+== Testabdeckung und Ergebnisse
+Exemplarische Testergebnisse der Kernlogik oder UI-Komponenten.
+
+
+= Deployment & Betrieb
+_Umfang: ca. 1–2 Seiten_
+
+== Deployment-Umgebung
+Wie wird die App deployt oder gestartet? Ist sie öffentlich erreichbar oder reproduzierbar per Docker?
+
+== Performance-Maßnahmen
+z.B. sinnvolle Cache-Header, Lazy Loading, komprimierte Responses.
+
+#set text(fill: b)
+= Reflexion & Fazit
+_Umfang: ca. 2 Seiten_
+
+== Was lief gut?
+...
+
+Notion als einfache Landing Page / Notizenübersicht
+GitHub für gemeinsamen Workflow
+
+Aufgabenverteilung
+
+== Was würden wir beim nächsten Mal anders machen?
+...
+
+== Was haben wir gelernt?
+...
+
+
+// Nummerierung Anhang/Quellen auschalten
+#set heading(numbering: none)
+
+= Quellenverzeichnis
+Angabe maßgeblich genutzter externer Tutorials oder Ressourcen.
+
+= Anhang
+_Umfang: ca. 2–3 Seiten_
+
+#set text(fill: g)
+== Screenshots der fertigen App
+Die wichtigsten Ansichten (z.B. Dashboard, Formulare, Listen).
+
+== Installationsanleitung (Optional)
+Wie man die App lokal zum Laufen bringt.
+
+== API-Dokumentation (Optional)
+Übersicht der Endpunkte.
