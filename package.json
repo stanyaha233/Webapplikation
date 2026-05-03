@@ -2,7 +2,7 @@
   "name": "webapplikation",
   "version": "1.0.0",
   "description": "**Team:** Stella Keller (315158), Hanna Stanyak(315230)",
-  "main": "src/home.js",
+  "main": "src/home.html",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
