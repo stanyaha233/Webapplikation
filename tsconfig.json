@@ -20,12 +20,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-
-    "baseUrl": ".", //für Pfade
-    "paths": {
-      "@/*": ["src/*"]
-    }
   },
-  "include": ["src"],
+  "include": ["src", "samples/M2/Login.tsx", "samples/M2/login.ts"],
   "exclude": ["node_modules", "dist"]
 }
