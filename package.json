@@ -22,7 +22,8 @@
   "homepage": "https://github.com/stanyaha233/Webapplikation#readme",
   "dependencies": {
     "react": "^19.2.5",
-    "react-dom": "^19.2.5"
+    "react-dom": "^19.2.5",
+    "react-router-dom": "^7.14.2"
   },
   "devDependencies": {
     "@types/react": "^19.2.14",

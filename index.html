@@ -1,60 +1,13 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Study Time</title>
-  <link rel="stylesheet" href="src/style.css">
-</head>
-<body class="page-layout">
-  <header class="page-header">
-    <h1>Welcome back, Alex.</h1>
-    <p>3-day streak — Today's goal: 60 minutes.</p>
-  </header>
-  <aside class="page-sidebar">
-    <ul>
-      <li><a href="src/home.html">Home</a></li>
-      <li><a href="src/login.html">Login</a></li>
-      <li><a href="src/timer.html">Timer</a></li>
-      <li><a href="src/dashboard.html">Dashboard</a></li>
-    </ul>
-    <section class="calendar" aria-labelledby="cal-title">
-      <h2 id="cal-title" class="visually-hidden"> streak tracker</h2>
-      <time datetime="2026-04">April 2026</time>
-      
-      <ul role="list" class="calendar-grid">
-        <li>● ● ● ● ● ● ●</li>
-        <li>● X ● ● ● X ●</li>
-        <li>● X X X X X X</li>
-      </ul>
-      <p><strong>9 Tage gelernt</strong></p>
-    </section>
-  </aside>
-
-  <main class="page-main">
-    <section aria-labelledby="stats-title">
-      <h2 id="stats-title">Diese Woche: 21 Minuten</h2>
-      <ul class="stats-list">
-        <li>Mo: 0 Min</li>
-        <li>Di: 1 Min</li>
-        <li>Mi: 2 Min</li>
-        <li>Do: 3 Min</li>
-        <li>Fr: 4 Min</li>
-        <li>Sa: 5 Min</li>
-        <li>So: 6 Min</li>
-      </ul>
-      
-      <article class="focus-card">
-        <h3>Start Focus Mode</h3>
-        <p>Ablenkungsfrei · Deep Work</p>
-        <a href="#timer.html" class="button">Fokus starten</a>
-      </article>
-    </section>
-  </main>
-
-  <footer class="page-footer">
-    <small> 2026 Your Flow Time. Alle Rechte vorbehalten.</small>
-  </footer>
-
-</body>
+ <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flowTime</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
