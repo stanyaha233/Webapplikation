@@ -1,7 +1,9 @@
 import './style.css';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
+
   return (
     <div className="page-layout">
       <main className="page-main">
@@ -18,9 +20,9 @@ export default function Login() {
             <button type="submit">Einloggen</button>
           </form>
         </div>
-        <button className="secondary">
+        <Link to="/register">
           Noch kein Konto? Registrieren
-        </button>
+        </Link>
       </main>
       <Footer />
     </div>

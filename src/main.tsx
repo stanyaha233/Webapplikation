@@ -6,6 +6,7 @@ import Home from './Home'
 import Login from './Login'
 import Timer from './Timer'
 import Dashboard from './Dashboard'
+import Register from './Register'
 
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Failed to find the root element');
@@ -19,6 +20,7 @@ createRoot(rootElement).render(
         <Route path="/login" element={<Login />} />
         <Route path="/timer" element={<Timer />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -1,8 +1,8 @@
 export interface User {
-id: number | string
-name: string;
-email: string;
-password: string ;
+    id: number | string;
+    name: string;
+    email: string;
+    password: string ;
 }
 
 export interface Session {
@@ -10,7 +10,14 @@ export interface Session {
     breakTime: number;
     starttime: number;
     endtime: number;
+    date: Date;
     progress: number;
     afterFeeling : "red"|"blue"|"grey";
+    userId: User["id"];
+}
+
+export interface SessionHistory {
+    id: number | string;
+    sessions: Session[];
     userId: User["id"];
 }
