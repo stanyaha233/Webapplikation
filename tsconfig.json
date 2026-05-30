@@ -22,6 +22,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["src", "samples/M2/Login.tsx", "samples/M2/login.ts"],
+  "include": ["src", "main.tsx", "App.tsx", "samples/M2/Login.tsx", "samples/M2/login.ts", "samples/M2/dashboardv2.tsx"],
   "exclude": ["node_modules", "dist"]
 }

@@ -49,7 +49,7 @@ body {
     grid-area: footer;
 }
 
-.calender {
+.calendar {
     text-align: center;
     margin: var(--spacing-sm);
     background-color: var(--color-bg);

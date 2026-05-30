@@ -2,29 +2,39 @@ import './style.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Home() {
+  const [studyStats, setStudyStats] = useState([
+    { day: 'Mo', minutes: 0 },
+    { day: 'Di', minutes: 1 },
+    { day: 'Mi', minutes: 2 },
+    { day: 'Do', minutes: 3 },
+    { day: 'Fr', minutes: 4 },
+    { day: 'Sa', minutes: 5 },
+    { day: 'So', minutes: 6 },
+  ]);
+
+  const totalMinutes = studyStats.reduce((acc, curr) => acc + curr.minutes, 0);
+
   return (
     <div className="page-layout">
       <Header />
       <Sidebar />
       <main className="page-main">
         <section aria-labelledby="stats-title">
-          <h2 id="stats-title">Diese Woche: 21 Minuten</h2>
+          <h2 id="stats-title">Diese Woche: {totalMinutes} Minuten</h2>
           <ul className="stats-list">
-            <li>Mo: 0 Min</li>
-            <li>Di: 1 Min</li>
-            <li>Mi: 2 Min</li>
-            <li>Do: 3 Min</li>
-            <li>Fr: 4 Min</li>
-            <li>Sa: 5 Min</li>
-            <li>So: 6 Min</li>
+            {studyStats.map((stat, index) => (
+              <li key={index}>{stat.day}: {stat.minutes} Min</li>
+            ))}
           </ul>
           
           <article className="focus-card">
             <h3>Start Focus Mode</h3>
             <p>Ablenkungsfrei · Deep Work</p>
-            <a href="#timer.html" className="button">Fokus starten</a>
+            <Link to="/timer" className="button">Fokus starten</Link>
           </article>
         </section>
       </main>
