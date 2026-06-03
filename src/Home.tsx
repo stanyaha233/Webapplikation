@@ -2,29 +2,20 @@ import './style.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { User }from './types/interfaces'
 
 export default function Home() {
-  const [studyStats, setStudyStats] = useState([
-    { day: 'Mo', minutes: 0 },
-    { day: 'Di', minutes: 1 },
-    { day: 'Mi', minutes: 2 },
-    { day: 'Do', minutes: 3 },
-    { day: 'Fr', minutes: 4 },
-    { day: 'Sa', minutes: 5 },
-    { day: 'So', minutes: 6 },
-  ]);
-
-  const totalMinutes = studyStats.reduce((acc, curr) => acc + curr.minutes, 0);
-
+    const [user, setUser] = useState<User | null>(null);
+    user || setUser({ id: 1, name: 'Hanna', email: 'Stella', password: '' });
   return (
     <div className="page-layout">
       <Header />
       <Sidebar />
       <main className="page-main">
         <section aria-labelledby="stats-title">
-          <h2 id="stats-title">Diese Woche: {totalMinutes} Minuten</h2>
+          <h1>Willkommen zurück, {user?.name}!</h1>
+          <h2 id="stats-title">Diese Woche: 21 Minuten</h2>
           <ul className="stats-list">
             {studyStats.map((stat, index) => (
               <li key={index}>{stat.day}: {stat.minutes} Min</li>

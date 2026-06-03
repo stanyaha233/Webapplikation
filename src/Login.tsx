@@ -1,26 +1,30 @@
 import './style.css';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 export default function Login() {
+  const title = 'Anmelden';
+  document.title = title;
   return (
     <div className="page-layout">
       <main className="page-main">
         <h1>Anmelden</h1>
         <div className="card">
-          {/* Noch reines HTML-Verhalten ohne React-Logik */}
           <form action="login.php" method="post">
-            <label>Nutzername</label>
-            <input type="text" name="username" required />
-            <br />
-            <label>Passwort</label>
-            <input type="password" name="password" required />
-            <br />
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+              <label style={{ width: '120px' }}>Nutzername</label>
+              <input type="text" name="username" required />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
+              <label style={{ width: '120px' }}>Passwort</label>
+              <input type="password" name="password" required />
+            </div>
             <button type="submit">Einloggen</button>
           </form>
         </div>
-        <button className="secondary">
+        <Link to="/register" className="register-link">
           Noch kein Konto? Registrieren
-        </button>
+        </Link>
       </main>
       <Footer />
     </div>
