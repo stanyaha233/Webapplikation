@@ -9,7 +9,7 @@ export default function Dashboard() {
         <h1>Lern-Dashboard</h1>
       </header>
       
-      <Sidebar /> //wegen grid layout!
+      <Sidebar />
 
       <main className="page-main">
         <div className="card">

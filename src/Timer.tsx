@@ -2,13 +2,39 @@ import './style.css';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import { useState, useEffect } from 'react';
 
 export default function Timer() {
+    const [step, setStep] = useState(1);
+    const [timeLeft, setTimeLeft] = useState(1800); // 30 Minuten in Sekunden
+
+    useEffect(() => {
+        let interval: ReturnType<typeof setInterval>;
+
+        // if (Timer-Seite (2) und die Zeit nicht abgelaufen)
+        if (step === 2 && timeLeft > 0) {
+            interval = setInterval(() => {
+                setTimeLeft((prevTime) => prevTime - 1);
+            }, 1000);
+        }
+
+        // seite verlassen = stoppen 
+        return () => clearInterval(interval);
+    }, [step, timeLeft]);
+
+    const formatTime = (seconds: number) => {
+        const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const s = (seconds % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+    };
+
     return (
         <div className="page-layout">
             <Header />
             <Sidebar />
             <main className="page-main">
+                {step === 1 && (
+                    <>
                 <nav aria-label="Timer-Einstellungen">
                     <h1>Settings</h1>
                     <ul>
@@ -32,23 +58,31 @@ export default function Timer() {
                         <li>Phone away</li>
                     </ul>
                 </div>
+                    <button className="button" onClick={() => setStep(2)}>Next: Start Timer</button>
+                    </>
+                )}
 
+                {step === 2 && (
+                    <>
                 <section className="timer-section">
                     <h2>Deep Work</h2>
-                    <div className="timer-display"><strong>30:00</strong></div>
+                    <div className="timer-display"><strong>{formatTime(timeLeft)}</strong></div>
                     <img alt="timer" style={{ width: "15rem" }} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F009%2F304%2F537%2Flarge_2x%2Fdigital-timer-clipart-design-illustration-free-png.png&f=1&nofb=1&ipt=255315f8397dd20f59b7968a113e8acda94ad3680b231608aa4a3862b38d22bb" />
-                    <p>Focus session · you have 30 min left</p>
+                    <p>Focus session · you have {Math.ceil(timeLeft / 60)} min left</p>
                     
                     <blockquote className="quote-box">
                         <p>"Stay focused, go after your dreams and keep moving toward your goals."</p>
                         <cite>— Unbekannt</cite>
                     </blockquote>
 
-                    <button className="button">◉ Start Focus Session</button>
+                    <button className="button" onClick={() => setStep(3)}>◉ Finish Session</button>
+                    <button className="button secondary" onClick={() => setStep(1)} style={{ marginLeft: '1rem' }}>Back</button>
                 </section>
+                    </>
+                )}
 
-                <hr />
-
+                {step === 3 && (
+                    <>
                 <section className="reflection-section">
                     <h2>Session Reflection</h2>
                     <div className="calender">
@@ -66,7 +100,14 @@ export default function Timer() {
                         <label><input type="radio" name="flow" value="flow" defaultChecked /> In the flow</label><br />
                         <label><input type="radio" name="flow" value="bored" /> Understimulated</label>
                     </div>
+                    
+                    <div style={{ marginTop: '1.5rem' }}>
+                        <button className="button" onClick={() => setStep(1)}>Save Reflection</button>
+                        <button className="button secondary" onClick={() => setStep(2)} style={{ marginLeft: '1rem' }}>Back</button>
+                    </div>
                 </section>
+                    </>
+                )}
             </main>
             <Footer />
         </div>
