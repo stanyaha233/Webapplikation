@@ -1,126 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400;500&display=swap');
+
 :root {
-    --color-primary: #95c2ff; 
-    --color-accent: #c2d9ff;  
-    --color-bg: #f4f8ff;      
-    --color-dark: #4a8fd4;     
-    --color-text: #1a1f2e;     
+    --blue: #95c2ff;
+    --blue-light: #c2d9ff;
+    --blue-pale: #e8f2ff;
+    --blue-dark: #4a8fd4;
+    --paper: #f4f8ff;
+    --white: #ffffff;
+    --ink: #1a1f2e;
+    --ink-soft: #3d4559;
+    --ink-muted: #7a86a0;
+    --streak: #ff8c42;
+    --streak-light: #ffe0c8;
     
-    --spacing-sm: 0.5rem;
-    --spacing-md: 1rem;
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --font-serif: 'Fraunces', Georgia, serif;
+    --font-mono: 'DM Mono', 'Courier New', monospace;
+
+    --radius-md: 12px;
+    --radius-pill: 100px;
+    --border-subtle: 1px solid rgba(0,0,0,0.06);
 }
 
 body {
     margin: 0;
     padding: 0;
+    background-color: var(--paper);
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    color: var(--ink);
+    margin-top: 0;
+}
+
+h1 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+h2 {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 1.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--blue-pale);
+}
+
+p {
+    font-size: 0.85rem;
+}
+
+.small-text, .status-loading {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+}
+
+.highlight {
+    background: var(--blue-pale);
+    color: var(--blue-dark);
+    display: inline-block;
+    padding: 0.18rem 0.55rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .page-layout {
-    font-family: 'Inter', sans-serif;
     display: grid;
     grid-template-areas:
         "header header"
         "sidebar main"
         "footer footer";
-    grid-template-columns: 220px 1fr;
+    grid-template-columns: 240px 1fr;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    background-color: var(--color-bg);
-    color: var(--color-text);
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1100px; /* Zentrierter Look wie im Sheet */
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
-.page-header {
-    grid-area: header;
-    padding: 4px 0;
+.page-header { grid-area: header; }
+.page-sidebar { grid-area: sidebar; }
+.page-footer { grid-area: footer; }
+
+.page-main { 
+    grid-area: main; 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.page-sidebar {
-    grid-area: sidebar;
-    background-color: var(--color-accent);
-    padding-left: 1rem;
-    padding-top: 1rem;
-}
-
-.page-main {
-    grid-area: main;
-}
-
-.page-footer {
-    grid-area: footer;
-}
-
-.calendar {
-    text-align: center;
-    margin: var(--spacing-sm);
-    background-color: var(--color-bg);
-    border-radius: 8px;
-}
-
-header {
-    justify-content: center;
-    text-align: center;
-    width: 100%;
-    background-color: var(--color-primary);
-    padding: 3rem 1rem;
-}
-
-sidebar {
-    background-color: var(--color-dark);
-    display: block;
-}
-
-main {
-    background-color: var(--color-bg);
-    padding: var(--spacing-md);
+header, .page-sidebar, .card, footer {
+    background-color: var(--white);
+    border: var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-sizing: border-box;
 }
 
 footer {
-    /* Positionierung */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    
-    /* Layout (Flexbox) */
     display: flex;
     justify-content: center;
     gap: 2rem;
-    padding: 1rem 0; 
-    
-    /* Design */
-    background-color: var(--color-primary); /* Nutzt deine Variable */
-    box-sizing: border-box;
-    z-index: 1000; /* Damit er immer über dem Inhalt liegt */
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
-/* Die Links direkt ansprechen */
-.page-footer a {
+a {
     text-decoration: none;
-    color: var(--color-text);
-    font-family: sans-serif;
-    font-weight: 500;
-    transition: opacity 0.2s; /* Schöner Übergang beim Hover */
+    color: var(--blue-dark);
+    transition: color 0.2s ease;
 }
 
-.page-footer a:hover {
-    text-decoration: underline;
-    opacity: 0.8;
+a:hover {
+    color: var(--blue);
 }
 
-.footer-links a {
-    text-decoration: none;    /* Entfernt den Standard-Unterstrich */
-    color: #000;              /* Setzt die Textfarbe auf Schwarz */
-    font-family: sans-serif;
-    font-weight: 500;
-}
-
-.footer-links a:hover {
-    text-decoration: underline; /* Zeigt den Unterstrich beim Drüberfahren wieder an */
-    color: #333;              /* Optional: leichte Farbänderung beim Hover */
+footer a {
+    color: var(--ink-muted);
 }
 
 ul {
     list-style: none;
+    padding: 0;
+}
+
+button {
+    background-color: var(--blue);
+    color: var(--ink);
+    border: none;
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1.25rem;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background-color: var(--blue-light);
+}
+
+button.secondary {
+    background-color: var(--blue-pale);
+    color: var(--blue-dark);
+}
+
+button.secondary:hover {
+    background-color: var(--blue-light);
 }
 
 @media (max-width: 768px) {
@@ -131,19 +171,8 @@ ul {
             "main"
             "footer";
         grid-template-columns: 1fr;
-        grid-template-rows: auto 1fr auto auto;
-        gap: 5px;
-    }
-}
-
-@media (min-width: 1280px) {
-    .page-layout {
-        grid-template-areas:
-            "header header"
-            "sidebar main"
-            "footer footer";
-        grid-template-columns: 220px 1fr;
-        grid-template-rows: auto 1fr auto auto;
-        gap: 1.5rem;
+        grid-template-rows: auto auto 1fr auto;
+        padding: 1rem;
+        gap: 1rem;
     }
 }

@@ -3,11 +3,18 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { User }from './types/interfaces'
 
 export default function Home() {
-    const [user, setUser] = useState<User | null>(null);
-    user || setUser({ id: 1, name: 'Hanna', email: 'Stella', password: '' });
+    const [user, setUser] = useState<User | null>({ id: 1, name: 'Hanna', email: 'Stella', password: '' });
+
+    const studyStats = [
+      { day: 'Montag', minutes: 120 },
+      { day: 'Dienstag', minutes: 90 },
+      { day: 'Mittwoch', minutes: 0 },
+    ];
+
   return (
     <div className="page-layout">
       <Header />
