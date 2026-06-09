@@ -52,13 +52,16 @@ export default function Register() {
             <Register_Set3 userData={userData} />
         )}
 
-        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
-                <button type="button" style={{ background: 'none', border: '1px solid var(--blue-dark)', color: 'var(--blue-dark)', padding: '0.5rem 1rem', cursor: 'pointer' }}>
-                    Already have an account? Log in
-                </button>
-            </Link>
-        </div>
+        {step !== 3 && (
+            <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                <Link to="/login" style={{ textDecoration: 'none' }}>
+                    <button type="button" style={{ background: 'none', border: '1px solid var(--blue-dark)', color: 'var(--blue-dark)', padding: '0.5rem 1rem', cursor: 'pointer' }}>
+                        Already have an account? Log in
+                    </button>
+                </Link>
+            </div>
+        )}
+        
       </main>
       <Footer />
     </div>

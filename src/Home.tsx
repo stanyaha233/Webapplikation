@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { User }from './types/interfaces'
 
 export default function Home() {
-    const [user, setUser] = useState<User | null>({ id: 1, name: 'Hanna', email: 'Stella', password: '' });
+    const [user, setUser] = useState<User | null>({ id: 1, name: 'Hanna', email: 'Stella', password: '', studyType: '' });
 
     const studyStats = [
       { day: 'Montag', minutes: 120 },
@@ -17,11 +17,10 @@ export default function Home() {
 
   return (
     <div className="page-layout">
-      <Header />
+      <Header userName={user?.name || ''} />
       <Sidebar />
       <main className="page-main">
         <section aria-labelledby="stats-title">
-          <h1>Willkommen zurück, {user?.name}!</h1>
           <h2 id="stats-title">Diese Woche: 21 Minuten</h2>
           <ul className="stats-list">
             {studyStats.map((stat, index) => (
