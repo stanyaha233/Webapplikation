@@ -28,7 +28,6 @@ export default function Register() {
             <p>🎉 Du bist der <strong className="highlight" style={{ color: 'var(--streak)' }}>1.337.</strong> User!</p>
         </div>
 
-        {/* Bedingtes Rendern der Schritte basierend auf dem State */}
         {step === 1 && (
             <Register_Set1 onNext={(data) => {
                 setUserData({ ...userData, ...data });
@@ -42,8 +41,7 @@ export default function Register() {
                 const finalData = { ...userData };
                 setUserData(finalData);
                 console.log('Registrierung komplett:', finalData);
-                
-                // Hier könnte später z.B. der API-Aufruf an das Backend / die Datenbank folgen
+                Storage.prototype.setItem.call(localStorage, 'userData', JSON.stringify(finalData));
                 setStep(3);
             }} />
         )}
