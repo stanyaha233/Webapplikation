@@ -1,4 +1,5 @@
 export default function Header({ userName = 'User' }: { userName?: string }) {
+  
   return (
     <header className="page-header">
       <h1>Welcome back, {userName}.</h1>

@@ -18,7 +18,7 @@ export default function Sidebar() {
           <li>● X ● ● ● X ●</li>
           <li>● X X X X X X</li>
         </ul>
-        <p><strong>9 Tage gelernt</strong></p>
+        <p><strong>8 Tage gelernt</strong></p>
       </section>
     </aside>
   );

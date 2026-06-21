@@ -15,6 +15,7 @@ const router = createBrowserRouter([
         element: <App />, // gemeinsames Layout (Rahmen)
         children: [ // verschachtelte Routen
             { index: true, element: <Home /> }, // "/" exakt
+            { path: "home", element: <Home /> }, // "/home"
             { path: "dashboard", element: <Dashboard /> }, // "/dashboard"
             { path:"timer", element: <Timer /> }, // "/timer"
             { path: "login", element: <Login /> }, // "/login"
