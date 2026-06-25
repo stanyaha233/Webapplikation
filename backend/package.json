@@ -5,14 +5,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx --watch src/server.ts",
     "start": "tsx src/server.ts",
-<<<<<<< Updated upstream
-    "db:push": "prisma db push"
-=======
     "db:push": "prisma db push",
     "test": "vitest run"
->>>>>>> Stashed changes
   },
   "keywords": [],
   "author": "",
@@ -21,10 +17,7 @@
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "bcrypt": "^6.0.0",
-<<<<<<< Updated upstream
-=======
     "cookie-parser": "^1.4.7",
->>>>>>> Stashed changes
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "helmet": "^8.2.0",
@@ -33,16 +26,6 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
-<<<<<<< Updated upstream
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/node": "^26.0.0",
-    "@types/pg": "^8.20.0",
-    "dotenv": "^17.4.2",
-    "prisma": "^7.8.0",
-    "tsx": "^4.22.4",
-    "typescript": "^6.0.3"
-=======
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
@@ -56,6 +39,5 @@
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
->>>>>>> Stashed changes
   }
 }

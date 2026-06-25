@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div className="page-layout">
-      <Header />
+      <Header userName={user?.name} />
       <Sidebar />
       <main className="page-main">
         <section aria-labelledby="stats-title">

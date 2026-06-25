@@ -13,10 +13,7 @@ model User {
   email        String   @unique
   name         String
   passwordHash String
-<<<<<<< Updated upstream
-=======
   studyType    String?
->>>>>>> Stashed changes
   createdAt    DateTime @default(now())
   sessions     Session[]
 }

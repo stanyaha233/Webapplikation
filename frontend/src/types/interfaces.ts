@@ -2,8 +2,8 @@ export interface User {
     id: number | string;
     name: string;
     email: string;
-    password: string ;
-    studyType: '';
+    password: string;
+    studyType?: "sprinter" | "marathon" | "hero" | "";
 }
 
 export interface Session {
@@ -13,7 +13,7 @@ export interface Session {
     endtime: number;
     date: Date;
     progress: number;
-    afterFeeling : "red"|"blue"|"grey";
+    afterFeeling: "red" | "blue" | "grey";
     userId: User["id"];
 }
 

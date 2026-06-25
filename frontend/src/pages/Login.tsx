@@ -1,8 +1,8 @@
-import { useState, FormEvent } from 'react';
 import '../styles/style.css';
 import Footer from '../components/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/JWTAuthContext';
+import { useState, FormEvent } from 'react';
 
 export default function Login() {
   const title = 'Login';

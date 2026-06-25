@@ -12,13 +12,13 @@
     --ink-muted: #7a86a0;
     --streak: #ff8c42;
     --streak-light: #ffe0c8;
-    
+
     --font-serif: 'Fraunces', Georgia, serif;
     --font-mono: 'DM Mono', 'Courier New', monospace;
 
     --radius-md: 12px;
     --radius-pill: 100px;
-    --border-subtle: 1px solid rgba(0,0,0,0.06);
+    --border-subtle: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 body {
@@ -30,7 +30,9 @@ body {
     line-height: 1.6;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     color: var(--ink);
     margin-top: 0;
 }
@@ -57,7 +59,8 @@ p {
     font-size: 0.85rem;
 }
 
-.small-text, .status-loading {
+.small-text,
+.status-loading {
     font-size: 0.75rem;
     color: var(--ink-muted);
 }
@@ -84,23 +87,33 @@ p {
     min-height: 100vh;
     gap: 1.5rem;
     padding: 1.5rem;
-    max-width: 1100px; /* Zentrierter Look wie im Sheet */
-    margin: 0 auto;
+    max-width: 1100px;
     box-sizing: border-box;
 }
 
-.page-header { grid-area: header; }
-.page-sidebar { grid-area: sidebar; }
-.page-footer { grid-area: footer; }
+.page-header {
+    grid-area: header;
+}
 
-.page-main { 
-    grid-area: main; 
+.page-sidebar {
+    grid-area: sidebar;
+}
+
+.page-footer {
+    grid-area: footer;
+}
+
+.page-main {
+    grid-area: main;
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-header, .page-sidebar, .card, footer {
+header,
+.page-sidebar,
+.card,
+footer {
     background-color: var(--white);
     border: var(--border-subtle);
     border-radius: var(--radius-md);

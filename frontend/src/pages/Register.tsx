@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../styles/style.css';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
@@ -8,6 +7,7 @@ import Register_Set3 from '../components/register/Register_Set3';
 import { Link } from 'react-router-dom';
 import type { User } from '../types/interfaces';
 import { useAuth } from '../context/JWTAuthContext';
+import { useState } from 'react';
 
 export default function Register() {
   const [step, setStep] = useState(1);
@@ -54,7 +54,7 @@ export default function Register() {
                 setError(null);
 
                 try {
-                  await register(finalData.name, finalData.email, finalData.password, finalData.studyType);
+                  await register(finalData.name, finalData.email, finalData.password, finalData.studyType ?? '');
                   await login(finalData.email, finalData.password);
 
                   setUserData(finalData);
