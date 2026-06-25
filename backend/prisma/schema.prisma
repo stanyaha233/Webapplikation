@@ -20,9 +20,15 @@ model User {
 
 
 model Session {
-  id String @id @default(uuid())
-  createdAt DateTime @default(now())
-  expiresAt DateTime
-  userId Int
-  user User @relation(fields: [userId], references: [id])
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  duration     Int
+  breakTime    Int 
+  starttime    Int 
+  endtime      Int 
+  progress     Int 
+  afterFeeling String
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
 }
+

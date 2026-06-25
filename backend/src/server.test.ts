@@ -3,9 +3,12 @@ import request from "supertest";
 import express, { Response, NextFunction } from "express";
 import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
+import { prisma } from "./server.js";
 
 interface AuthRequest extends express.Request {
   user?: { id: number; email: string };
+  session?: { id: number; duration: number; breakTime: number, starttime: number, endtime: number, date: Date, progress: number, afterFeeling: string, userId: number };
+
 }
 
 const JWT_SECRET = "test-secret-key";
@@ -63,6 +66,26 @@ app.post("/api/login", (req: AuthRequest, res: Response) => {
 
 app.get("/api/user", authenticateToken, (req: AuthRequest, res: Response) => {
   res.json({ id: req.user?.id, email: req.user?.email });
+});
+
+app.get("/api/getsession", authenticateToken, async (req: AuthRequest, res: Response) => {
+  const userId = req.user?.id; // Der eingeloggte User aus dem JWT-Token
+
+  try {
+    // Hole die neueste Session dieses Users aus der DB
+    const latestSession = await prisma.session.findFirst({
+      where: { userId: userId },
+      orderBy: { createdAt: "desc" }
+    });
+
+    if (!latestSession) {
+      return res.status(404).json({ error: "No session found" });
+    }
+
+    res.json(latestSession);
+  } catch (error) {
+    res.status(500).json({ error: "Database error" });
+  }
 });
 
 describe("Auth API Tests", () => {
