@@ -11,7 +11,7 @@ import bcrypt from "bcrypt";
 
 const pool = new pg.Pool({ connectionString: process.env.DATABASE_URL });
 const adapter = new PrismaPg(pool);
-const prisma = new PrismaClient({ adapter });
+export const prisma = new PrismaClient({ adapter });
 
 const app = express();
 const PORT = 3000;
@@ -27,6 +27,8 @@ const JWT_SECRET = process.env.JWT_SECRET || "super-secure-jwt-secret-key-123456
 
 interface AuthRequest extends Request {
     user?: { id: number; email: string };
+    session?: { id: number; duration: number; breakTime: number, starttime: number, endtime: number, date: Date, progress: number, afterFeeling: string, userId: number };
+
 }
 
 const authenticateToken = (
@@ -172,19 +174,26 @@ app.get("/api/userPassword", authenticateToken, (_req: Request, res: Response) =
     res.json({ password: "[SECRET_HIDDEN]" });
 });
 
-app.get("/api/getsession", authenticateToken, (req: AuthRequest, res: Response) => {
-    res.json({
-        sessionId: 123456,
-        duration: 25,
-        breakTime: 5,
-        starttime: Date.now(),
-        endtime: Date.now() + 30 * 60 * 1000,
-        date: new Date(),
-        progress: 80,
-        afterFeeling: "blue",
-        userId: req.user?.id || 123
-    });
+app.get("/api/getsession", authenticateToken, async (req: AuthRequest, res: Response) => {
+    const userId = req.user?.id; // Der eingeloggte User aus dem JWT-Token
+
+    try {
+        // Hole die neueste Session dieses Users aus der DB
+        const latestSession = await prisma.session.findFirst({
+            where: { userId: userId },
+            orderBy: { createdAt: "desc" }
+        });
+
+        if (!latestSession) {
+            return res.status(404).json({ error: "No session found" });
+        }
+
+        res.json(latestSession);
+    } catch (error) {
+        res.status(500).json({ error: "Database error" });
+    }
 });
+
 
 app.listen(PORT, () => {
     console.log(`Backend Server running on http://localhost:${PORT}`);
