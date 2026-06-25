@@ -3,7 +3,6 @@
 **Team:** Stella Keller (315158), Hanna Stanyak(315230)
 
 **Repository:** https://github.com/stanyaha233/Webapplikation
-<<<<<<< Updated upstream
 
 ## Setup
 bash
@@ -14,30 +13,16 @@ npm run dev
 ## Projektidee
 Die Idee für dieses Projekt ist es, eine Study-Website für das Modul Webapplikationen zu erstellen. Diese beinhaltet einen Pomodoro-Timer sowie einen Flow-Tracker, in dem man angeben kann, wie viel Prozent des Ziels man erreicht hat, um somit die optimale Study-Time herauszufinden, was das Ganze individualisiert. Man soll außerdem einen wöchentlichen Study-Überblick haben, um zu sehen, wie man über die letzte Woche am besten gelernt hat.
 =======
-<<<<<<< Updated upstream
-## Projektidee
-
-Die Idee für dieses Projekt ist es, eine Study-Website für das Modul Webapplikationen zu erstellen. Diese beinhaltet einen Pomodoro-Timer sowie einen Flow-Tracker, in dem man angeben kann, wie viel Prozent des Ziels man erreicht hat, um somit die optimale Study-Time herauszufinden, was das Ganze individualisiert. Man soll außerdem einen wöchentlichen Study-Überblick haben, um zu sehen, wie man über die letzte Woche am besten gelernt hat. Die Website soll so entwickelt werden, dass sie neurodivergenten Personen einen Vorteil bringt, aber auch „Normaltypischen“.
-=======
 
 ## Projektidee
 Study-Website die, angelehnt an Pomodoro-Timer sowie an das Prinzip des Flow-States, die optimale Study/Break-Ratio herauszufinden soll.
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 Optionale Add-ons wären:
 Wöchentlicher Study Überblick
 Beste Lernzeit (Uhezeit: Morgen vs. Abend)
 Equalizer aus YouTube-Videos
 RSS-Feed Study-Reminder
-<<<<<<< Updated upstream
-URL zB Zeitintervalle oder hexCode preset angeben
-=======
-<<<<<<< Updated upstream
-=======
 in URL zB Zeitintervalle, Namen oder hexCode pre-set angeben
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 ## Kriterien-Zuordnung M1
 | Kriterium | Datei | Zeile / Hinweis |
@@ -48,11 +33,7 @@ in URL zB Zeitintervalle, Namen oder hexCode pre-set angeben
 | Konsistente Typografie und Farbgebung | styles.css | Z. 2-10 |
 | Media Query | styles.css | Z. 85, Z.98 |
 | URL-Struktur | home.html, login.html, register.html, timer.html, dashboard.html | Pfade: /home, /login, /register, /timer, /dashboard|
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
+
 
 ## Kriterien-Zuordnung M2
 
@@ -64,9 +45,6 @@ in URL zB Zeitintervalle, Namen oder hexCode pre-set angeben
 | Props-Übergabe | src/Home.tsx, src/Header.tsx | Z. 20 Home (userName-Prop), Z. 1 Header (Prop-Empfang) |
 | useState | src/Timer.tsx | Z. 8 (step), Z. 9 (timeLeft) |
 | useEffect | src/Timer.tsx | Z. 11–23 (Timer-Intervall / Countdown) |
-<<<<<<< Updated upstream
-| Durchgängige Nutzeraktion | src/Timer.tsx | Z. 58, 71 (Einstellungen -> Deep Work -> Reflection via State step) |
-=======
 | Durchgängige Nutzeraktion | src/Timer.tsx | Z. 58, 71 (Einstellungen -> Deep Work -> Reflection via State step) |
 
 ## Kriterien-Zuordnung M3
@@ -147,5 +125,4 @@ alle Kernfeatures (Timer, Statistiken) passwortgeschützt und dynamisch personal
 | | UI vorschauen | `cd frontend && npm run preview` | Lokale Vorschau des Builds |
 | **Testen** | Frontend-Tests | `cd frontend && npm test` | Vitest + RTL (Zustand & Auth-Flow) |
 | | Backend-Tests | `cd backend && npm test` | Vitest + Supertest (Middleware & Endpunkte) |
->>>>>>> Stashed changes
 >>>>>>> Stashed changes
