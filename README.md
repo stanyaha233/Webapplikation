@@ -12,7 +12,6 @@ npm run dev
 ```
 ## Projektidee
 Die Idee für dieses Projekt ist es, eine Study-Website für das Modul Webapplikationen zu erstellen. Diese beinhaltet einen Pomodoro-Timer sowie einen Flow-Tracker, in dem man angeben kann, wie viel Prozent des Ziels man erreicht hat, um somit die optimale Study-Time herauszufinden, was das Ganze individualisiert. Man soll außerdem einen wöchentlichen Study-Überblick haben, um zu sehen, wie man über die letzte Woche am besten gelernt hat.
-=======
 
 ## Projektidee
 Study-Website die, angelehnt an Pomodoro-Timer sowie an das Prinzip des Flow-States, die optimale Study/Break-Ratio herauszufinden soll.
