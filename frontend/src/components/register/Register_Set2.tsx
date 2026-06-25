@@ -32,15 +32,15 @@ export default function Register_Set2({ onNext }: RegisterSet2Props) {
                     </label>
                     <br />
                     <button
-                type="button"
-                className="submit-btn"
-                onClick={() => onNext(studyType)}
-            >
-                Weiter
-            </button>
+                        type="button"
+                        className="submit-btn"
+                        onClick={() => onNext(studyType)}
+                    >
+                        Weiter
+                    </button>
                 </form>
             </div>
-            
+
 
 
         </div>

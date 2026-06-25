@@ -3,3 +3,10 @@ node_modules
 samples
 .vscode
 dist
+
+backend/.env
+backend/dev.db
+backend/dev.db-journal
+backend/generated/prisma
+
+frontend/.vercel

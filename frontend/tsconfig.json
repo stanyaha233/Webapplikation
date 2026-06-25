@@ -2,19 +2,22 @@
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "skipLibCheck": true,
-
     "moduleResolution": "bundler", //bundles für vite
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["vite/client"], //für zB css import 
-    
+    "types": [
+      "vite/client"
+    ], //für zB css import 
     "jsx": "react-jsx", //für React
-
     "strict": true, //TypÜberprüfung
     "noImplicitAny": true, //siehe M2
     "noImplicitReturns": true,
@@ -22,6 +25,16 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
   },
+<<<<<<< Updated upstream
   "include": ["src", "App.tsx", "samples/M2/Login.tsx", "samples/M2/login.ts", "samples/M2/dashboardv2.tsx"],
   "exclude": ["node_modules", "frontend/dist"]
+=======
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "frontend/dist"
+  ]
+>>>>>>> Stashed changes
 }

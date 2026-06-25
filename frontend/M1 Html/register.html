@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<<<<<<< Updated upstream
   <div class="page-layout">
     <aside class="page-sidebar">
         <ul>
@@ -57,6 +58,58 @@
         </form>
     </main>
 </div>
+=======
+    <div class="page-layout">
+        <aside class="page-sidebar">
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </aside>
+        <main class="page-main">
+            <div class="card" style="background: var(--streak-light); border: 1px solid var(--streak);">
+                <p>🎉 Du bist der <strong class="highlight" style="color:var(--streak);">1.337.</strong> User!</p>
+            </div>
+
+            <form>
+                <div class="card">
+                    <h2>Registrierung</h2>
+                    <input type="text" placeholder="Name" required>
+                    <br />
+                    <input type="email" placeholder="E-Mail-Adresse" required>
+                    <input type="password" placeholder="Passwort" required>
+                </div>
+
+                <div class="card">
+                    <h2>Wie lernst du normalerweise?</h2>
+                    <label class="radio-option">
+                        <input type="radio" name="study-type" value="sprinter">
+                        <span><strong style="color:var(--blue-dark);">Sprinter:</strong> Kurz und intensiv</span>
+                    </label>
+                    <br /><br />
+                    <label class="radio-option">
+                        <input type="radio" name="study-type" value="marathon">
+                        <span><strong style="color:var(--blue-dark);">Marathonläufer:</strong> Stundenlang und
+                            stetig</span>
+                    </label>
+                    <br /><br />
+                    <label class="radio-option">
+                        <input type="radio" name="study-type" value="hero">
+                        <span><strong style="color:var(--blue-dark);">Last-Minute-Hero:</strong> Hoher Druck
+                            nötig</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Account erstellen</button>
+                <button type="button" onclick="window.location.href='login.html'"
+                    style="background:none; border:1px solid var(--blue-dark); color:var(--blue-dark);">
+                    Already have an account? Log in
+                </button>
+            </form>
+        </main>
+    </div>
+>>>>>>> Stashed changes
 </body>
 
 </html>
