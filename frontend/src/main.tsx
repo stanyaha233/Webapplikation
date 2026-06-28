@@ -7,9 +7,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Timer from './pages/Timer';
+import DemoTimer from './pages/DemoTimer';
 import ProtectedRoute from './components/ProtectedRoute';
 import ErrorPage from './components/ErrorPage';
-
 
 const router = createBrowserRouter([
     {
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
             { path: "home", element: <Home /> }, // "/home"
             { path: "dashboard", element: <ProtectedRoute><Dashboard /></ProtectedRoute> }, // "/dashboard"
             { path: "timer", element: <ProtectedRoute><Timer /></ProtectedRoute> }, // "/timer"
+            { path: "demo", element: <DemoTimer /> }, // "/demo"
             { path: "login", element: <Login /> }, // "/login"
             { path: "register", element: <Register /> }, // "/register"
         ]

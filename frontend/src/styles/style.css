@@ -152,31 +152,274 @@ ul {
 
 button {
     background-color: var(--blue);
-    color: var(--ink);
+    color: var(--white);
     border: none;
     border-radius: var(--radius-pill);
-    padding: 0.5rem 1.25rem;
+    padding: 0.6rem 1.5rem;
     font-family: inherit;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 button:hover {
-    background-color: var(--blue-light);
+    background-color: var(--blue-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 button.secondary {
     background-color: var(--blue-pale);
     color: var(--blue-dark);
+    box-shadow: none;
 }
 
 button.secondary:hover {
     background-color: var(--blue-light);
+    transform: translateY(-2px);
+}
+
+/* Custom Toggle Switch */
+.toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    user-select: none;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background-color: #d1d5db;
+    /* soft gray */
+    border-radius: var(--radius-pill);
+    transition: background-color 0.3s ease;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--white);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+input[type="checkbox"]:checked+.toggle-switch {
+    background-color: var(--blue);
+}
+
+input[type="checkbox"]:checked+.toggle-switch::after {
+    transform: translateX(20px);
+}
+
+input[type="checkbox"].hidden-checkbox {
+    display: none;
+}
+
+/* Custom Range Slider */
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+}
+
+.slider-value {
+    font-weight: 600;
+    color: var(--blue-dark);
+    background: var(--blue-pale);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-md);
+    font-size: 0.8rem;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: var(--radius-pill);
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--blue);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+/* Custom Scroll Picker (iOS style wheel) */
+.scroll-picker-container {
+    position: relative;
+    height: 120px;
+    background: var(--white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.scroll-picker {
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+}
+
+.scroll-picker::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-picker-item {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    font-size: 1.1rem;
+    color: var(--ink-muted);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.scroll-picker-item.active {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+}
+
+.scroll-picker-overlay {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    border-top: 1px solid var(--blue-light);
+    border-bottom: 1px solid var(--blue-light);
+    background: rgba(149, 194, 255, 0.05);
+    pointer-events: none;
+}
+
+/* Reflection Screen Styling */
+.reflection-card {
+    background: var(--white);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.reflection-progress-bar {
+    width: 100%;
+    height: 12px;
+    background-color: var(--paper);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.reflection-progress-fill {
+    height: 100%;
+    background-color: var(--blue);
+    transition: width 1s ease-in-out;
+}
+
+.feedback-grid {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.feedback-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 2px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: var(--white);
+    color: var(--ink-soft);
+    font-weight: 500;
+}
+
+.feedback-option:hover {
+    border-color: var(--blue-light);
+    background: var(--blue-pale);
+}
+
+.feedback-option.active {
+    border-color: var(--blue);
+    background: var(--blue-pale);
+    color: var(--blue-dark);
+    box-shadow: 0 4px 12px rgba(149, 194, 255, 0.2);
+}
+
+.feedback-emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+input[type="radio"].hidden-radio {
+    display: none;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 2rem 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 @media (max-width: 768px) {
+    .settings-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
     .page-layout {
         grid-template-areas:
             "header"
@@ -187,5 +430,9 @@ button.secondary:hover {
         grid-template-rows: auto auto 1fr auto;
         padding: 1rem;
         gap: 1rem;
+    }
+
+    .feedback-grid {
+        flex-direction: column;
     }
 }
