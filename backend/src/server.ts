@@ -194,6 +194,30 @@ app.get("/api/getsession", authenticateToken, async (req: AuthRequest, res: Resp
     }
 });
 
+app.post("/api/session", authenticateToken, async (req: AuthRequest, res: Response) => {
+    const userId = req.user?.id; // Der authentifizierte User aus dem JWT-Cookie
+    if (!userId) {
+        return res.status(401).json({ error: "Nicht autorisiert." });
+    }
+    const { duration, breakTime, starttime, endtime, progress, afterFeeling } = req.body;
+    try {
+        const newSession = await prisma.session.create({
+            data: {
+                duration: parseInt(duration) || 0,
+                breakTime: parseInt(breakTime) || 0,
+                starttime: new Date(starttime).toISOString() || 0,
+                endtime: new Date(endtime).toISOString() || 0,
+                progress: parseInt(progress) || 0,
+                afterFeeling: afterFeeling || "flow",
+                user: { connect: { id: userId } },
+            },
+        });
+        res.status(201).json(newSession);
+    } catch (error) {
+        console.error("Fehler beim Speichern der Session:", error);
+        res.status(500).json({ error: "Session konnte nicht gespeichert werden." });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Backend Server running on http://localhost:${PORT}`);

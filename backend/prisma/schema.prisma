@@ -24,8 +24,8 @@ model Session {
   createdAt    DateTime @default(now())
   duration     Int
   breakTime    Int 
-  starttime    Int 
-  endtime      Int 
+  starttime    DateTime 
+  endtime      DateTime 
   progress     Int 
   afterFeeling String
   userId       Int

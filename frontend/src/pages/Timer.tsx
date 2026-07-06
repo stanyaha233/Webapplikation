@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import ScrollPicker from '../components/ScrollPicker';
 import { useState, useEffect } from 'react';
 
+
 export default function Timer() {
     // 1: Settings, 2: Active Timer, 3: Reflection
     const [step, setStep] = useState(1);
@@ -21,6 +22,63 @@ export default function Timer() {
     const [isActive, setIsActive] = useState(false);
     const [elapsedGlobalSeconds, setElapsedGlobalSeconds] = useState(0);
     const [feedback, setFeedback] = useState('flow');
+    const [startTime, setStartTime] = useState<string | null>(null);
+    const [endTime, setEndTime] = useState<string | null>(null);
+
+    const saveSession = async () => {
+        // Calculate actual study duration in seconds
+        let actualStudySeconds = 0;
+        if (timerMode === 'study') {
+            actualStudySeconds = (currentBlock - 1) * studyMinutes * 60 + (studyMinutes * 60 - timeLeft);
+        } else if (timerMode === 'break') {
+            actualStudySeconds = currentBlock * studyMinutes * 60;
+        } else if (timerMode === 'prep') {
+            actualStudySeconds = 0;
+        }
+
+        // Calculate actual break duration in seconds
+        let actualBreakSeconds = 0;
+        if (timerMode === 'break') {
+            actualBreakSeconds = (currentBlock - 1) * breakMinutes * 60 + (breakMinutes * 60 - timeLeft);
+        } else if (timerMode === 'study' || timerMode === 'prep') {
+            actualBreakSeconds = Math.max(0, currentBlock - 1) * breakMinutes * 60;
+        }
+
+        // Map feedback 'stress' to backend 'overwhelmed'
+        const mappedFeedback = feedback === 'stress' ? 'overwhelmed' : feedback;
+
+        try {
+            const response = await fetch("/api/session", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    duration: actualStudySeconds,
+                    breakTime: actualBreakSeconds,
+                    starttime: startTime || new Date().toISOString(),
+                    endtime: endTime || new Date().toISOString(),
+                    progress: Math.round(globalProgress),
+                    afterFeeling: mappedFeedback,
+                }),
+                credentials: "include",
+            });
+
+            if (!response.ok) {
+                throw new Error("Fehler beim Speichern der Session");
+            }
+
+            const data = await response.json();
+            console.log("Session erfolgreich gespeichert:", data);
+        } catch (error) {
+            console.error("Fehler beim Speichern der Session:", error);
+        } finally {
+            setStep(1);
+            setFeedback('flow');
+            setStartTime(null);
+            setEndTime(null);
+        }
+    };
 
     // Calculate current phase total
     let currentPhaseTotal = 0;
@@ -80,6 +138,7 @@ export default function Timer() {
                     setTimeLeft(breakMinutes * 60);
                     setIsActive(true); // Auto-start break
                 } else {
+                    setEndTime(new Date().toISOString());
                     setStep(3); // Go to reflection after all blocks are done
                 }
             } else if (timerMode === 'break') {
@@ -94,6 +153,8 @@ export default function Timer() {
     }, [step, isActive, timeLeft, timerMode, breakMinutes, studyMinutes, currentBlock, numBlocks, currentPhaseTotal]);
 
     const handleStart = () => {
+        setStartTime(new Date().toISOString());
+        setEndTime(null);
         // Skip prep phase if set to 0
         if (prepMinutes > 0) {
             setTimerMode('prep');
@@ -110,6 +171,7 @@ export default function Timer() {
 
     const handleCancel = () => {
         setIsActive(false);
+        setEndTime(new Date().toISOString());
         setStep(3); // Skip to reflection
     };
 
@@ -335,11 +397,8 @@ export default function Timer() {
                             </div>
                         </div>
 
-                        <button className="button" style={{ marginTop: "2.5rem", width: "100%" }} onClick={() => {
-                            setStep(1);
-                            setFeedback('flow');
-                        }}>
-                            Back to Settings
+                        <button className="button" style={{ marginTop: "2.5rem", width: "100%" }} onClick={saveSession}>
+                            Save & Back to Settings
                         </button>
                     </section>
                 )}
