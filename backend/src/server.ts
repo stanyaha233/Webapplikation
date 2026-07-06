@@ -218,7 +218,9 @@ app.post("/api/session", authenticateToken, async (req: AuthRequest, res: Respon
         res.status(500).json({ error: "Session konnte nicht gespeichert werden." });
     }
 });
-
-app.listen(PORT, () => {
-    console.log(`Backend Server running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== "production") {
+    app.listen(PORT, () => {
+        console.log(`Backend Server running on http://localhost:${PORT}`);
+    });
+}
+export default app;
