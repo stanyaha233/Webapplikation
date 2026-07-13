@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useMemo } from 'react';
 
 interface ScrollPickerProps {
     value: number;
@@ -15,10 +15,13 @@ export default function ScrollPicker({ value, onChange, min, max, step = 1 }: Sc
     const itemHeight = 40;
 
     // Generate options
-    const options = [];
-    for (let i = min; i <= max; i += step) {
-        options.push(i);
-    }
+    const options = useMemo(() => {
+        const opts: number[] = [];
+        for (let i = min; i <= max; i += step) {
+            opts.push(i);
+        }
+        return opts;
+    }, [min, max, step]);
 
     const handleScroll = () => {
         if (!containerRef.current) return;

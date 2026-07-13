@@ -9,11 +9,10 @@ export interface User {
 export interface Session {
     duration: number;
     breakTime: number;
-    starttime: number;
-    endtime: number;
-    date: Date;
+    starttime: string;
+    endtime: string;
     progress: number;
-    afterFeeling: "red" | "blue" | "grey";
+    afterFeeling: "overwhelmed" | "flow" | "tired";
     userId: User["id"];
 }
 

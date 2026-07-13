@@ -194,6 +194,26 @@ app.get("/api/getsession", authenticateToken, async (req: AuthRequest, res: Resp
     }
 });
 
+app.get("/api/sessions", authenticateToken, async (req: AuthRequest, res: Response) => {
+    const userId = req.user?.id;
+
+    if (!userId) {
+        return res.status(401).json({ error: "Nicht autorisiert." });
+    }
+
+    try {
+        const sessions = await prisma.session.findMany({
+            where: { userId: userId },
+            orderBy: { starttime: "desc" }
+        });
+        res.json(sessions);
+    } catch (error) {
+        console.error("Fehler beim Abrufen der Sessions:", error);
+        res.status(500).json({ error: "Datenbankfehler beim Abrufen der Sessions." });
+    }
+});
+
+
 app.post("/api/session", authenticateToken, async (req: AuthRequest, res: Response) => {
     const userId = req.user?.id; // Der authentifizierte User aus dem JWT-Cookie
     if (!userId) {
@@ -205,8 +225,8 @@ app.post("/api/session", authenticateToken, async (req: AuthRequest, res: Respon
             data: {
                 duration: parseInt(duration) || 0,
                 breakTime: parseInt(breakTime) || 0,
-                starttime: new Date(starttime).toISOString() || 0,
-                endtime: new Date(endtime).toISOString() || 0,
+                starttime: starttime ? new Date(starttime) : new Date(),
+                endtime: endtime ? new Date(endtime) : new Date(),
                 progress: parseInt(progress) || 0,
                 afterFeeling: afterFeeling || "flow",
                 user: { connect: { id: userId } },

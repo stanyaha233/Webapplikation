@@ -436,3 +436,66 @@ input[type="radio"].hidden-radio {
         flex-direction: column;
     }
 }
+
+/* Sidebar Calendar Styling */
+.calendar {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: var(--border-subtle);
+}
+
+.calendar time {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 1rem;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.calendar-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    font-size: 0.8rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.calendar-day.empty {
+    visibility: hidden;
+}
+
+.calendar-day.not-studied {
+    color: var(--ink-muted);
+    opacity: 0.5;
+}
+
+.calendar-day.studied {
+    background-color: var(--streak-light);
+    color: var(--streak);
+    font-weight: bold;
+    border: 1px solid var(--streak);
+}

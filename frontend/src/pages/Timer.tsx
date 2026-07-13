@@ -70,6 +70,9 @@ export default function Timer() {
 
             const data = await response.json();
             console.log("Session erfolgreich gespeichert:", data);
+
+            // Trigger custom event to notify Sidebar/Dashboard to reload sessions
+            window.dispatchEvent(new Event("session-saved"));
         } catch (error) {
             console.error("Fehler beim Speichern der Session:", error);
         } finally {
