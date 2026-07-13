@@ -26,7 +26,7 @@ export default function Dashboard() {
     loadSessions();
   }, []);
 
-  flowCountLast7Days = sessions.filter(session => new Date(session.endtime).getTime() >= Date.now() - 7 * 24 * 60 * 60 * 1000).length;
+  flowCountLast7Days = sessions.filter(session => session.afterFeeling === 'flow' && new Date(session.endtime).getTime() >= Date.now() - 7 * 24 * 60 * 60 * 1000).length;
   if (loading) {
     return (
       <div className="page-layout">
@@ -48,7 +48,7 @@ export default function Dashboard() {
         <h1>Learning Dashboard</h1>
       </header>
 
-      <Sidebar /> //wegen grid layout!
+      <Sidebar /> {/* wegen grid layout! */}
 
       <main className="page-main">
         <div className="card">
@@ -76,17 +76,17 @@ export default function Dashboard() {
             </>
             : <>
               {"Analyse:"}
-              {(sessions.filter((session) => session.afterFeeling == "flow").length > 0) ?
-                <p>Du hattest {sessions.filter((session) => session.afterFeeling == "flow").length} mal ein tolles Gefühl nach dem Lernen.</p>
-                : ""}
-              {(sessions.filter((session) => session.afterFeeling == "overwhelmed").length > 0) ?
-                <p>Du hattest {sessions.filter((session) => session.afterFeeling == "overwhelmed").length} mal ein gestresstes Gefühl nach dem Lernen.</p>
-                : ""}
-              {(sessions.filter((session) => session.afterFeeling == "tired").length > 0) ?
-                <p>Du hattest {sessions.filter((session) => session.afterFeeling == "tired").length} mal ein müdes Gefühl nach dem Lernen.</p>
-                : ""}
-              { }
-
+              {(() => {
+                const flowSessions = sessions.filter((session) => session.afterFeeling === "flow");
+                const flowAverage = flowSessions.length > 0 
+                  ? Math.round((flowSessions.reduce((total, session) => total + session.duration, 0) / flowSessions.length) / 60)
+                  : 0;
+                return flowAverage > 0 ? (
+                  <p>Deine produktiven Flow-Phasen dauern durchschnittlich {flowAverage} Minuten.</p>
+                ) : (
+                  <p>Keine ausreichenden Flow-Daten für eine Analyse vorhanden.</p>
+                );
+              })()}
             </>
 
           }
@@ -94,10 +94,21 @@ export default function Dashboard() {
         <div className="card">
           <h2>Your Learner Type</h2>
           {sessions.length < 10 ?
-            "Discover your Learner Type! You unlock it when you locked 10 Sessions so keep it up! You need " + (10 - sessions.length) + " more sessions." :
+            "Discover your Learner Type! You unlock it when you locked 10 Sessions so keep it up! You need " + (10 - sessions.length) + " more sessions."
+            :
             <>
-              <p>Status: <span className="highlight">Evening Learner</span></p>
-              <p>Based on your last 10 sessions (Type: Morning/Afternoon/Evening).</p>
+              {(() => {
+                let eveningCount = sessions.filter((session) => new Date(session.starttime).getHours() >= 18 || new Date(session.starttime).getHours() <= 4).length;
+                let morningCount = sessions.filter((session) => new Date(session.starttime).getHours() >= 5 && new Date(session.starttime).getHours() <= 11).length;
+                let afternoonCount = sessions.filter((session) => new Date(session.starttime).getHours() >= 12 && new Date(session.starttime).getHours() <= 17).length;
+                if (eveningCount > morningCount && eveningCount > afternoonCount) {
+                  return "You are an Evening Learner.";
+                } else if (morningCount > eveningCount && morningCount > afternoonCount) {
+                  return "You are a Morning Learner.";
+                } else {
+                  return "You are an Afternoon Learner.";
+                }
+              })()}
             </>
           }
         </div>

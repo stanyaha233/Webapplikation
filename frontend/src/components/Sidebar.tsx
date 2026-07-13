@@ -20,6 +20,7 @@ export default function Sidebar() {
     return d.getFullYear() === currentYear && d.getMonth() === currentMonth;
   });
 
+  const calendarCells: { dayNumber: number | null; isStudyDay: boolean }[] = [];
 
   const studyDaysThisMonth = Array.from(
     new Set(sessionsThisMonth.map(session => new Date(session.starttime).getDate()))
@@ -29,14 +30,9 @@ export default function Sidebar() {
   const firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
 
   const firstDayOffset = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
-
-  // 4. Erstelle das Raster (Grid) für den Kalender
-  const calendarCells = [];
-  // Leere Versatz-Zellen hinzufügen (z.B. Montag & Dienstag leer, wenn der 1. ein Mittwoch ist)
   for (let i = 0; i < firstDayOffset; i++) {
     calendarCells.push({ dayNumber: null, isStudyDay: false });
   }
-  // Eigentliche Tage hinzufügen
   for (let day = 1; day <= daysInMonth; day++) {
     calendarCells.push({
       dayNumber: day,
@@ -64,7 +60,6 @@ export default function Sidebar() {
     }
     loadSessions();
 
-    // Custom-Event abfangen, um Sessions neu zu laden, wenn eine neue Session gespeichert wird
     window.addEventListener("session-saved", loadSessions);
     return () => {
       window.removeEventListener("session-saved", loadSessions);

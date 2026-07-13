@@ -392,8 +392,8 @@ export default function Timer() {
                                     <span className="feedback-emoji">🌊</span>
                                     In the flow
                                 </label>
-                                <label className={`feedback-option ${feedback === 'bored' ? 'active' : ''}`}>
-                                    <input type="radio" name="flow" value="bored" className="hidden-radio" onChange={() => setFeedback('bored')} checked={feedback === 'bored'} />
+                                <label className={`feedback-option ${feedback === 'tired' ? 'active' : ''}`}>
+                                    <input type="radio" name="flow" value="tired" className="hidden-radio" onChange={() => setFeedback('tired')} checked={feedback === 'tired'} />
                                     <span className="feedback-emoji">🥱</span>
                                     Understimulated
                                 </label>
