@@ -33,6 +33,7 @@ export default function Timer() {
     const [isActive, setIsActive] = useState(false);
     const [elapsedGlobalSeconds, setElapsedGlobalSeconds] = useState(0);
     const [feedback, setFeedback] = useState('flow');
+    const [goalProgress, setGoalProgress] = useState(80);
     const [startTime, setStartTime] = useState<string | null>(null);
     const [endTime, setEndTime] = useState<string | null>(null);
 
@@ -69,7 +70,7 @@ export default function Timer() {
                     breakTime: actualBreakSeconds,
                     starttime: startTime || new Date().toISOString(),
                     endtime: endTime || new Date().toISOString(),
-                    progress: Math.round(globalProgress),
+                    progress: goalProgress,
                     afterFeeling: mappedFeedback,
                 }),
                 credentials: "include",
@@ -89,6 +90,7 @@ export default function Timer() {
         } finally {
             setStep(1);
             setFeedback('flow');
+            setGoalProgress(80);
             setStartTime(null);
             setEndTime(null);
         }
@@ -381,12 +383,28 @@ export default function Timer() {
                         <p style={{ color: "var(--ink-muted)", marginBottom: "2rem" }}>Great job! Your flow data has been recorded.</p>
 
                         <div style={{ textAlign: "left", marginBottom: "2rem" }}>
-                            <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "600", fontSize: "0.95rem" }}>
-                                <span>Total Completed</span>
-                                <span style={{ color: "var(--blue-dark)" }}>{Math.round(globalProgress)}%</span>
+                            <div style={{ display: "flex", justifyContent: "space-between", fontWeight: "600", fontSize: "0.95rem", marginBottom: "0.5rem" }}>
+                                <span>Wie viel Prozent deines Ziels hast du erreicht?</span>
+                                <span style={{ color: "var(--blue-dark)" }}>{goalProgress}%</span>
                             </div>
-                            <div className="reflection-progress-bar">
-                                <div className="reflection-progress-fill" style={{ width: `${Math.round(globalProgress)}%` }}></div>
+                            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="100"
+                                    step="5"
+                                    value={goalProgress}
+                                    onChange={(e) => setGoalProgress(parseInt(e.target.value))}
+                                    style={{
+                                        width: "100%",
+                                        cursor: "pointer",
+                                    }}
+                                />
+                            </div>
+                            <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.75rem", color: "var(--ink-muted)", marginTop: "0.25rem" }}>
+                                <span>0% (nichts geschafft)</span>
+                                <span>50%</span>
+                                <span>100% (Ziel erreicht)</span>
                             </div>
                         </div>
 
