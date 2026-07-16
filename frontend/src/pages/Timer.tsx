@@ -5,6 +5,16 @@ import Footer from '../components/Footer';
 import ScrollPicker from '../components/ScrollPicker';
 import { useState, useEffect } from 'react';
 
+const STUDY_QUOTES = [
+  { text: "Stay focused, go after your dreams and keep moving toward your goals.", author: "Unknown" },
+  { text: "Der Langsamste, der sein Ziel nicht aus den Augen verliert, geht noch immer geschwinder als jener, der ohne Ziel umherirrt.", author: "Gotthold Ephraim Lessing" },
+  { text: "Erfolg ist die Summe kleiner Anstrengungen, die Tag für Tag wiederholt werden.", author: "Robert Collier" },
+  { text: "Focus on being productive instead of busy.", author: "Tim Ferriss" },
+  { text: "It always seems impossible until it's done.", author: "Nelson Mandela" },
+  { text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+  { text: "Do not wait for inspiration; be the inspiration.", author: "Unknown" },
+  { text: "Your talent determines what you can do. Your motivation determines how much you are willing to do. Your attitude determines how well you do it.", author: "Lou Holtz" }
+];
 
 export default function Timer() {
     // 1: Settings, 2: Active Timer, 3: Reflection
@@ -14,6 +24,7 @@ export default function Timer() {
     const [studyMinutes, setStudyMinutes] = useState(30);
     const [breakMinutes, setBreakMinutes] = useState(5);
     const [numBlocks, setNumBlocks] = useState(4);
+    const [showQuotes, setShowQuotes] = useState(true);
 
     // 'prep' | 'study' | 'break'
     const [timerMode, setTimerMode] = useState<'prep' | 'study' | 'break'>('prep');
@@ -237,7 +248,7 @@ export default function Timer() {
                             </div>
                             <div className="settings-checkbox" style={{ marginTop: "1.5rem" }}>
                                 <label className="toggle-label">
-                                    <input type="checkbox" className="hidden-checkbox" defaultChecked />
+                                    <input type="checkbox" className="hidden-checkbox" checked={showQuotes} onChange={(e) => setShowQuotes(e.target.checked)} />
                                     <div className="toggle-switch"></div>
                                     Show Quotes
                                 </label>
@@ -355,10 +366,10 @@ export default function Timer() {
                             </button>
                         </div>
 
-                        {timerMode === 'study' && (
+                        {showQuotes && timerMode === 'study' && (
                             <blockquote className="quote-box" style={{ marginTop: "3rem" }}>
-                                <p>"Stay focused, go after your dreams and keep moving toward your goals."</p>
-                                <cite>— Unknown</cite>
+                                <p>"{STUDY_QUOTES[(currentBlock - 1) % STUDY_QUOTES.length].text}"</p>
+                                <cite>— {STUDY_QUOTES[(currentBlock - 1) % STUDY_QUOTES.length].author}</cite>
                             </blockquote>
                         )}
                     </section>

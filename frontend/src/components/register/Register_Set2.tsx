@@ -35,6 +35,11 @@ export default function Register_Set2({ onNext }: RegisterSet2Props) {
                         type="button"
                         className="submit-btn"
                         onClick={() => onNext(studyType)}
+                        disabled={!studyType}
+                        style={{
+                            opacity: !studyType ? 0.5 : 1,
+                            cursor: !studyType ? 'not-allowed' : 'pointer'
+                        }}
                     >
                         Weiter
                     </button>

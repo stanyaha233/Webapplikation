@@ -170,29 +170,7 @@ app.get("/api/userName", authenticateToken, async (req: AuthRequest, res: Respon
     }
 });
 
-app.get("/api/userPassword", authenticateToken, (_req: Request, res: Response) => {
-    res.json({ password: "[SECRET_HIDDEN]" });
-});
 
-app.get("/api/getsession", authenticateToken, async (req: AuthRequest, res: Response) => {
-    const userId = req.user?.id; // Der eingeloggte User aus dem JWT-Token
-
-    try {
-        // Hole die neueste Session dieses Users aus der DB
-        const latestSession = await prisma.session.findFirst({
-            where: { userId: userId },
-            orderBy: { createdAt: "desc" }
-        });
-
-        if (!latestSession) {
-            return res.status(404).json({ error: "No session found" });
-        }
-
-        res.json(latestSession);
-    } catch (error) {
-        res.status(500).json({ error: "Database error" });
-    }
-});
 
 app.get("/api/sessions", authenticateToken, async (req: AuthRequest, res: Response) => {
     const userId = req.user?.id;
