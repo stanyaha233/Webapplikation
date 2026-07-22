@@ -414,7 +414,19 @@ input[type="radio"].hidden-radio {
     margin-bottom: 1.5rem;
 }
 
+.sidebar-toggle {
+    display: none;
+}
+
+.sidebar-overlay {
+    display: none;
+}
+
 @media (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
     .settings-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
@@ -423,17 +435,97 @@ input[type="radio"].hidden-radio {
     .page-layout {
         grid-template-areas:
             "header"
-            "sidebar"
             "main"
             "footer";
         grid-template-columns: 1fr;
-        grid-template-rows: auto auto 1fr auto;
+        grid-template-rows: auto 1fr auto;
         padding: 1rem;
         gap: 1rem;
     }
 
     .feedback-grid {
         flex-direction: column;
+    }
+
+    /* Sidebar Mobile Collapsible Styling */
+    .sidebar-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 1.25rem;
+        right: 1.25rem;
+        z-index: 1010;
+        background-color: var(--white);
+        border: var(--border-subtle);
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(26, 31, 46, 0.08);
+        color: var(--ink-soft);
+        transition: all 0.2s ease;
+        padding: 0;
+    }
+
+    .sidebar-toggle:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(26, 31, 46, 0.12);
+        color: var(--blue-dark);
+        background-color: var(--white);
+    }
+
+    .sidebar-toggle:active {
+        transform: translateY(0);
+    }
+
+    .sidebar-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(26, 31, 46, 0.4);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 1000;
+        animation: fadeIn 0.2s ease-out;
+    }
+
+    .page-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px;
+        z-index: 1005;
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0;
+        border-top: none;
+        border-bottom: none;
+        border-left: none;
+        border-right: var(--border-subtle);
+        overflow-y: auto;
+        margin: 0;
+        box-shadow: none;
+        background-color: var(--white);
+    }
+
+    .page-sidebar.is-open {
+        transform: translateX(0);
+        box-shadow: 4px 0 24px rgba(26, 31, 46, 0.15);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 }
 
