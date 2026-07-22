@@ -377,8 +377,6 @@ Und ein Formular mit label und name Attribut:
 </form>
 ```
 
-
-
 ==== CSS
 - Wir sollten eine CSS Datei machen die das Layaut an die grösse des Bildschirm anpasst je nachdem wie gross das fenster ist das kann man mit Flexbox oder Grid erzeugen.
 - Dann sollten wir die Farbgebung und die Typografie konsistent halten und das wurde dann auch in der CSS gemacht 
@@ -387,6 +385,19 @@ Und ein Formular mit label und name Attribut:
 ==== HTTP-Bewusstsein (Tabelle hinzufügen)
 Wir sollten uns eine klare URL Struktur für die seiten uns Ressourcen überlegen das ist bei uns so:
 
+#v(8pt)
+#table(
+  columns: (1.5fr, 3fr, 1fr),
+  inset: 7pt,
+  align: horizon,
+  [*URL-Pfad*], [*Inhalt / Beschreibung*], [*Zugriff*],
+  [`/` oder `/home`], [Startseite mit wöchentlichen Lernstatistiken und Timer-Link], [Öffentlich],
+  [`/login`], [Anmeldeseite für bestehende Benutzer], [Öffentlich],
+  [`/register`], [Registrierungsseite für neue Benutzer], [Öffentlich],
+  [`/timer`], [Interaktiver Lerntimer für Fokus- und Pausenphasen], [Registrierte Benutzer],
+  [`/dashboard`], [Lernjournal und Verlauf aller Lerneinheiten], [Registrierte Benutzer],
+  [`/demo`], [Frei zugängliche Timer-Demo ohne Benutzerkonto], [Öffentlich]
+)
 #v(10pt)
 === Meilenstein 2: 
 === Aufgabestellung:

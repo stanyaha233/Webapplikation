@@ -10,3 +10,4 @@ backend/dev.db-journal
 backend/generated/prisma
 
 frontend/.vercel
+_dokumentation/Dokumentation.pdf
